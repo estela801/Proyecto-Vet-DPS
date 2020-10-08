@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "ProyectoDPS": {
@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ProyectoDPS"
+    }
+  },
+  "defaultProject": "ProyectoDPS",
+  "cli": {
+    "analytics": "5cbc5664-72a6-4ae8-8c00-67fa9970cf56"
+  }
 }
