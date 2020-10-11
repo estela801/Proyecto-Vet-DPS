@@ -16,6 +16,9 @@ import { AngularFireAuth, AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pantalla-principal.component';
+
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,8 @@ import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pan
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule
   ],
   providers: [
     UsuarioService
