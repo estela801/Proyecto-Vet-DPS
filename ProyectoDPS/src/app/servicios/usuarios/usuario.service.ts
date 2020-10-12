@@ -98,4 +98,12 @@ export class UsuarioService {
       window.alert(error)
     })
   }
+
+  //Cerrar sesión
+  cerrarSesion(){
+    return this.afAuth.signOut().then(() => {
+      localStorage.setItem('user', null);
+      this.router.navigate(['inicio-sesion']);
+    })
+  }
 }

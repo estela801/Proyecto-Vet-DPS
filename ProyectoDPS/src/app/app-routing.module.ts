@@ -5,6 +5,7 @@ import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion
 import { RegistrateComponent } from './componentes/registrate/registrate.component';
 import { VerificacionCorreoComponent } from './componentes/verificacion-correo/verificacion-correo.component';
 import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pantalla-principal.component';
+import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuario/configuracion-usuario.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/inicio',pathMatch:'full'},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'inicio-sesion', component: InicioSesionComponent},
   {path:'registrate', component: RegistrateComponent},
   {path:'verificacion-correo', component: VerificacionCorreoComponent},
-  {path:'pantalla-principal', component: PantallaPrincipalComponent}
+  {path:'pantalla-principal', component: PantallaPrincipalComponent},
+  {path:'configuracion-usuario', component: ConfiguracionUsuarioComponent}
 ];
 
 @NgModule({

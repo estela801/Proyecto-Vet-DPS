@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
 import Swal from 'sweetalert2';
 import { Router} from '@angular/router';
+
 @Component({
   selector: 'app-pantalla-principal',
   templateUrl: './pantalla-principal.component.html',
@@ -16,7 +17,8 @@ export class PantallaPrincipalComponent implements OnInit {
   constructor(
     public usuarioService: UsuarioService,
     private usuariosphp: UsuarioPHPService,
-    public router: Router
+    public router: Router,
+    public ngZone: NgZone
     ) { }
 
     usu = {
@@ -35,11 +37,22 @@ export class PantallaPrincipalComponent implements OnInit {
     this.usuariosphp.verUsuarioCli(this.usuarioService.usuarioDatos.email).subscribe(datos => {
       if(datos['resultado'] == 'OK' && datos['mensaje']== '0'){
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Haz la configuracion basica para comenzar!',
-          showConfirmButton: false,
-          timer: 1500
+          title: 'Configuracion inicial',
+          text: "¡Bienvenido!\n Antes de iniciar realicemos las configuraciones iniciales",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Hacer configuración!',
+          cancelButtonText: 'Salir'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.ngZone.run(() => {
+              this.router.navigate(['configuracion-usuario']);
+            });
+          }else{
+            this.usuarioService.cerrarSesion();
+          }
         })
       }else if(datos['resultado'] == 'OK' && datos['mensaje'] == '1'){
         Swal.fire({

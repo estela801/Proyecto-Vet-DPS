@@ -1,0 +1,51 @@
+<p>configuracion-usuario works!</p>
+<body style="background-color: #fff;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-33">
+						 Configuración
+					</span><br>
+					<div class="or-container">
+						<div class="line-separator"></div>
+						<div class="or-label">Ingresa los datos requeridos</div>
+						<div class="line-separator"></div>
+					</div>
+					
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="nombre" #nombre placeholder="Nombre completo" >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+					<div class="wrap-input100 rs1 validate-input" *ngIf="usuarioService.usuarioDatos as usuario">
+                        <input class="input100" type="text" disabled  value="correo:  {{usuario.email}}"> 
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+                    </div><br>
+                    
+                    <div class="wrap-input100 validate-input">
+						<p>Fecha de nacimiento :</p><input class="input100" type="date" name="fechaNac" #fechaNac>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+                    </div><br>
+                    
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="telefono" #telefono placeholder="Número Telefonico" >
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div><br>
+
+					<div class="container-login100-form-btn m-t-20">
+						<button class="login100-form-btn" type="button">
+							Configurar
+						</button>
+					</div><br>
+				</form>	
+			</div>
+		</div>
+	</div>
+</body>

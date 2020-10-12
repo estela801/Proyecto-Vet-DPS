@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pantalla-principal.component';
 
 import {HttpClientModule} from '@angular/common/http';
+import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuario/configuracion-usuario.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {HttpClientModule} from '@angular/common/http';
     InicioSesionComponent,
     RegistrateComponent,
     VerificacionCorreoComponent,
-    PantallaPrincipalComponent
+    PantallaPrincipalComponent,
+    ConfiguracionUsuarioComponent
   ],
   imports: [
     BrowserModule,
