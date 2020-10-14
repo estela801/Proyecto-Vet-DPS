@@ -1,0 +1,66 @@
+<body style="background-color: #fff;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				<form class="login100-form validate-form"  #agregarForm="ngForm" novalidate>
+					<div>
+						<div style="float: left;"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path style="margin-left: 50%;" fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"/>
+						</svg></div>
+						<div><span class="login100-form-title p-b-33">
+							 Configuración
+						</span></div>
+					</div><br>
+					<div class="or-container">
+						<div class="line-separator"></div>
+						<div class="or-label">Ingresa los datos requeridos</div>
+						<div class="line-separator"></div>
+					</div>
+					
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="nombre"  placeholder="Nombre completo" #nombre="ngModel" required minlength="5" [(ngModel)]="usu.nombre">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+						<div style="text-align: right;" *ngIf=" nombre.invalid && (nombre.dirty || nombre.touched)">
+							<p style="color: red;" *ngIf=" nombre.errors.required"> Tu nombre es requerido!</p>
+							<p style="color: red;" *ngIf="nombre.errors.minlength">Necesitamos tu nombre completo!</p>
+						</div>
+					</div>
+
+					<div class="wrap-input100 rs1 validate-input" *ngIf="usuarioService.usuarioDatos as usuario">
+                        <input class="input100" type="text" disabled  value="correo:  {{usuario.email}}"> 
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+                    </div><br>
+                    
+                    <div class="wrap-input100 validate-input">
+						<p>Fecha de nacimiento :</p><input class="input100" type="date" name="fechaNac" #fechaNac="ngModel" [(ngModel)]="usu.fechaNac" max="{{hoy | date:'dd/M/yyyy'}}" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+						<div style="text-align: right; color: red;" *ngIf="fechaNac.invalid && (fechaNac.dirty || fechaNac.touched)">
+							<p *ngIf="fechaNac.errors.required" style="color: red;">Es necesaria tu fecha de nacimiento</p>
+							<p *ngIf="fechaNac.errors.max" style="color: red;">Fecha de nacimiento invalida!</p>
+						</div>
+                    </div><br>
+                    
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="telefono" #telefono="ngModel" placeholder="Número Telefonico" [(ngModel)]="usu.telefono" pattern="^[0-9]{4}-[0-9]{4}$" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+						<div style="color: red; text-align: right;" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+							<p *ngIf="telefono.errors.required" style="color: red;">Necesitamos tu número telefonico</p>
+							<p *ngIf="telefono.errors.pattern" style="color: red;">Tu número telefonico no es valido! Patron(####-####)</p>
+						</div>
+					</div><br>
+
+					<div class="container-login100-form-btn m-t-20">
+						<button class="login100-form-btn" type="button" (click)="configPHP()" [disabled]="agregarForm.invalid">
+							Configurar
+						</button>
+					</div><br>
+				</form>	
+			</div>
+		</div>
+	</div>
+</body>

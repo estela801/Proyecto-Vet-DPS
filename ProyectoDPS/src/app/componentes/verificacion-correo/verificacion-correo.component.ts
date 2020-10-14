@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UsuarioService } from '../../servicios/usuarios/usuario.service'; 
 @Component({
   selector: 'app-verificacion-correo',
   templateUrl: './verificacion-correo.component.html',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerificacionCorreoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public usuarioService : UsuarioService) { }
 
   ngOnInit(): void {
   }
