@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2020 a las 09:57:29
+-- Tiempo de generación: 14-10-2020 a las 10:27:07
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.3.21
 
@@ -96,10 +96,17 @@ CREATE TABLE `tb_receta` (
 CREATE TABLE `tb_usuario` (
   `correo_usuario` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `fechaNac` varchar(9) NOT NULL,
+  `fechaNac` varchar(11) NOT NULL,
   `telefono` varchar(9) NOT NULL,
   `tipo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tb_usuario`
+--
+
+INSERT INTO `tb_usuario` (`correo_usuario`, `nombre`, `fechaNac`, `telefono`, `tipo`) VALUES
+('keven_97@hotmail.com', 'kevin Fuentes', '1997-11-03', '7312-8294', 1);
 
 --
 -- Índices para tablas volcadas

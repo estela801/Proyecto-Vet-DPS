@@ -20,6 +20,8 @@ import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pan
 import {HttpClientModule} from '@angular/common/http';
 import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuario/configuracion-usuario.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuar
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     UsuarioService

@@ -13,4 +13,8 @@ export class UsuarioPHPService {
   verUsuarioCli(correo : string){
     return this.http.get(`${this.url}existo.php?correo=${correo}`);
   }
+
+  insertarPHP(usuarios){
+    return this.http.post(`${this.url}insertarUsuario.php`, JSON.stringify(usuarios));
+  }
 }
