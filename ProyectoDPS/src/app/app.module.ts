@@ -19,6 +19,7 @@ import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pan
 
 import {HttpClientModule} from '@angular/common/http';
 import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuario/configuracion-usuario.component';
+import { MenuComponent } from './componentes/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuar
     RegistrateComponent,
     VerificacionCorreoComponent,
     PantallaPrincipalComponent,
-    ConfiguracionUsuarioComponent
+    ConfiguracionUsuarioComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
