@@ -12,16 +12,26 @@ import { Router } from '@angular/router';
 })
 export class ConfiguracionUsuarioComponent implements OnInit {
 
+  ahora = new Date();
+  mes = this.ahora.getMonth();
+  formattedDate : any = this.ahora.getFullYear() +'-'+ this.mes +'-'+ this.ahora.getDay();
+
+  mesNac:number = null;
+  diaNac : number = null;
+  anioNac : number = null;
+
   usuariosphp = null;
   usu = {
     correo:this.usuarioService.usuarioDatos.email,
     nombre:null,
-    fechaNac: null,
+    fechaNac: this.formattedDate,
     telefono: null,
     tipo : 1
   }
 
   hoy:number = Date.now();
+
+ 
   constructor(
     public usuarioService : UsuarioService,
     public usuariosPHPService : UsuarioPHPService,
@@ -33,6 +43,13 @@ export class ConfiguracionUsuarioComponent implements OnInit {
 
 
   configPHP(){
+    if(this.usu.nombre == null || this.usu.fechaNac == null || this.usu.telefono == null){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'No puedes dejar datos vacios!'
+      })
+    }else{
     this.usuariosPHPService.insertarPHP(this.usu).subscribe(datos => {
       if(datos['resultado'] == 'OK'){
         Swal.fire({
@@ -44,7 +61,15 @@ export class ConfiguracionUsuarioComponent implements OnInit {
         }).then(() => {
           this.router.navigate(['pantalla-principal']);
         })
-      }
-    })
+      } if(datos['resultado'] == "NO"){
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: ''+datos["mensaje"]
+          })
+        }
+      })
+    }
   }
+
 }
