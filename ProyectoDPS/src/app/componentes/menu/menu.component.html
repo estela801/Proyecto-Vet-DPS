@@ -2,30 +2,54 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="/menu.js"></script>
+<script src="menu.js"></script>
+<!--
+<div class="wrapper">
+<nav class="contenedor-menu sidebar">
+    <h2>Menú</h2>
+    <ul class="menu" >
 
-<nav class="contenedor-menu">
-
- <ul class="menu" >
-    
-<!--*************************************-->
-<li><a>Inicio</a></li>
-<li><a>Agenda</a><ul>
-    <li><a>Agregar Cita</a></li>
-    <li><a>Ver Citas</a></li>
-</ul></li>
-<li><a>Mascotas</a><ul>
-    <li><a>Agregar Mascota</a></li>
-    <li><a>Ver Pacientes</a></li>
-</ul></li>
-<li><a>Medicamentos</a><ul>
-    <li><a>Agregar Medicamento</a></li>
-    <li><a>Ver Inventario</a></li>
-</ul></li>
-<!--*************************************-->
+        <li><a><i class="fas fa-home"></i>Inicio</a></li>
+        <li><a><i class="fas fa-calendar-minus"></i>Agenda</a><ul>
+            <li><a>Agregar Cita</a></li>
+            <li><a>Ver Citas</a></li>
+    </ul></li>
+    <li><a><i class="fas fa-paw"></i>Mascotas</a><ul>
+        <li><a>Agregar Mascota</a></li>
+        <li><a>Ver Pacientes</a></li>
+    </ul></li>
+    <li><a><i class="fas fa-tablets"></i>Medicamentos</a><ul>
+        <li><a>Agregar Medicamento</a></li>
+        <li><a>Ver Inventario</a></li>
+    </ul></li>
 
        </ul> 
+    </nav>
+</div>-->
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
- 
-    </nav> <!--fin sidebar-->
 
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Menú Principal</h2>
+        <ul class="menu">
+            <li ><a href="#"><i class="fas fa-home"></i>Inicio</a></li>
+            <li (click)="onsubmenu1()"><a ><i class="fas fa-user"></i>Agenda</a><ul>
+                <li *ngIf ="submenu1 == true" routerLink="/inicio-sesion"><a>Agregar Cita</a></li>
+                <li *ngIf ="submenu1 == true"><a>Ver Citas</a></li>
+            </ul></li>
+            <li (click)="onSubmenu2()"><a><i class="fas fa-address-card"></i>Mascotas</a><ul>
+                <li *ngIf ="submenu2 == true" ><a>Agregar Mascota</a></li>
+                <li *ngIf ="submenu2 == true"><a>Ver Pacientes</a></li>
+            </ul></li>
+            <li (click)="onSubmenu3()"><a><i class="fas fa-project-diagram"></i>Medicamentos</a><ul>
+                <li *ngIf ="submenu3 == true"><a>Agregar Medicamento</a></li>
+                <li *ngIf ="submenu3 == true"><a>Ver Inventario</a></li>
+            </ul></li>
+        </ul> 
+        <div class="social_media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
