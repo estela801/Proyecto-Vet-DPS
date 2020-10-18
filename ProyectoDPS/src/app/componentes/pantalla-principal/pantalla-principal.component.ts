@@ -29,8 +29,14 @@ export class PantallaPrincipalComponent implements OnInit {
       tipo: 1
     }
 
+  usuarioPHP : Usuariosphp;
+
+  mascotaRegistrada : boolean;
+
   ngOnInit(){
     this.onRegistradoPHP();
+    this.onObtener(this.usuarioService.usuarioDatos.email);
+    this.tenerMascota(this.usuarioService.usuarioDatos.email);
   }
 
   onRegistradoPHP(){
@@ -72,6 +78,20 @@ export class PantallaPrincipalComponent implements OnInit {
           this.router.navigate(['registrate']);
           }
         )
+      }
+    })
+  }
+
+  onObtener(correo : string){
+    this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
+  }
+
+  tenerMascota(correo:string){
+    this.usuariosphp.tenerMascota(correo).subscribe( datos => {
+      if(datos["resultado"] == "NO" && datos["mascota"]==0){
+        this.mascotaRegistrada = false;
+      }else {
+        this.mascotaRegistrada = true;
       }
     })
   }

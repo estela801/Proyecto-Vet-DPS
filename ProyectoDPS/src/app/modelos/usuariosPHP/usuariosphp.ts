@@ -1,6 +1,6 @@
 export class Usuariosphp {
-    nombre: string;
     correo : string;
+    nombre: string;
     fechaNac : string;
     telefono : string;
     tipo : number;  

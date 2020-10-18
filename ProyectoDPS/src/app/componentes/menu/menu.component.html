@@ -35,17 +35,27 @@
         <ul class="menu">
             <li ><a href="#"><i class="fas fa-home"></i>Inicio</a></li>
             <li (click)="onsubmenu1()"><a ><i class="fas fa-user"></i>Agenda</a><ul>
-                <li *ngIf ="submenu1 == true" routerLink="/inicio-sesion"><a>Agregar Cita</a></li>
+                <li *ngIf ="submenu1 == true" routerLink="/inicio-sesion"><a>Agendar Cita</a></li>
                 <li *ngIf ="submenu1 == true"><a>Ver Citas</a></li>
             </ul></li>
             <li (click)="onSubmenu2()"><a><i class="fas fa-address-card"></i>Mascotas</a><ul>
-                <li *ngIf ="submenu2 == true" ><a>Agregar Mascota</a></li>
-                <li *ngIf ="submenu2 == true"><a>Ver Pacientes</a></li>
+                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 1" ><a>Agregar a mis mascotas</a></li>
+                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 1" ><a>Ver mis mascotas</a></li>
+                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2"><a>Agregar mascotas</a></li>
+                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2"><a>Ver Pacientes</a></li>
             </ul></li>
-            <li (click)="onSubmenu3()"><a><i class="fas fa-project-diagram"></i>Medicamentos</a><ul>
+            <li (click)="onSubmenu3()" *ngIf="usuarioPHP.tipo == 2"><a><i class="fas fa-project-diagram"></i>Medicamentos</a><ul>
                 <li *ngIf ="submenu3 == true"><a>Agregar Medicamento</a></li>
                 <li *ngIf ="submenu3 == true"><a>Ver Inventario</a></li>
             </ul></li>
+            <!--Aqui empieza le menu para agegar veterinarios-->
+            <li (click)="onSubmenu4()" *ngIf="usuarioPHP.tipo == 2"><a><i class="fas fa-address-card"></i>Trabajadores</a><ul>
+                <!--Servira para agregar veterinarios-->
+                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2"><a>Agregar veterinarios</a></li>
+                <!--Ver todos los veterinarios-->
+                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2"><a>Ver veterinarios</a></li>
+            </ul></li>
+            <li ><a href="#">Cerrarr Sesión</a></li>
         </ul> 
         <div class="social_media">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
