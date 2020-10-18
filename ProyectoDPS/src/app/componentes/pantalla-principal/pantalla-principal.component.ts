@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
 import Swal from 'sweetalert2';
 import { Router} from '@angular/router';
+import { throws } from 'assert';
 
 @Component({
   selector: 'app-pantalla-principal',
@@ -13,7 +14,6 @@ import { Router} from '@angular/router';
 })
 export class PantallaPrincipalComponent implements OnInit {
 
-  usuarios = null;
   constructor(
     public usuarioService: UsuarioService,
     private usuariosphp: UsuarioPHPService,
@@ -21,15 +21,7 @@ export class PantallaPrincipalComponent implements OnInit {
     public ngZone: NgZone
     ) { }
 
-    usu = {
-      nombre: null,
-      correo: this.usuarioService.usuarioDatos.email,
-      fechaNac: null,
-      telefono: null,
-      tipo: 1
-    }
-
-  usuarioPHP : Usuariosphp;
+  usuarioPHP : Usuariosphp = new Usuariosphp;
 
   mascotaRegistrada : boolean;
 
@@ -93,6 +85,46 @@ export class PantallaPrincipalComponent implements OnInit {
       }else {
         this.mascotaRegistrada = true;
       }
+    })
+  }
+
+  enlaceMascotas(){
+    Swal.fire({
+      title: 'Submit your Github username',
+      input: 'number',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Look up',
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      this.usuariosphp.enlaceMascota(this.usuarioService.usuarioDatos.email, result.value ).subscribe(datos => {
+        if(datos["resultado"] == "NO" && datos["msg"] == 0){
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Revisa el código proporcionado por tu veterrinario",
+            timer: 3000
+          })
+        }else if(datos["resultado"] == "Error" && datos["msg"] == "NO"){
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Intenta más tarde",
+            timer: 3000
+          })  
+        }else if(datos["resultado"] == "OK" && datos["msg"]== "datos grabados"){
+          Swal.fire({
+            icon: "success",
+            title: "Exito",
+            text: "Datos guardados con exito!",
+            timer: 3000
+          }).then(() => {
+            this.ngOnInit();
+          })  
+        }
+      })
     })
   }
 }

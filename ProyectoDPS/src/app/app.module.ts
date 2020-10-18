@@ -22,6 +22,7 @@ import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuar
 import { MenuComponent } from './componentes/menu/menu.component';
 
 import { FormsModule } from '@angular/forms';
+import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-mascota.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     VerificacionCorreoComponent,
     PantallaPrincipalComponent,
     ConfiguracionUsuarioComponent,
-    MenuComponent
+    MenuComponent,
+    EnlaceMascotaComponent
   ],
   imports: [
     BrowserModule,

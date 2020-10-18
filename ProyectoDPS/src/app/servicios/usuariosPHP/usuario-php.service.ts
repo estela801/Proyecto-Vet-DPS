@@ -25,4 +25,8 @@ export class UsuarioPHPService {
   tenerMascota(correo : string){
     return this.http.get(`${this.url}tenerMascota.php?correo=${correo}`);
   }
+
+  enlaceMascota(usuario : string, mascota: string){
+    return this.http.get(`${this.url}enlaceMascota.php?mascota=${mascota}&usuario=${usuario}`);
+  }
 }
