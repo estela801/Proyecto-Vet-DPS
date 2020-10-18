@@ -7,6 +7,7 @@ import { IndexComponent } from './componentes/index/index.component';
 import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
 import { RegistrateComponent } from './componentes/registrate/registrate.component';
 import { VerificacionCorreoComponent } from './componentes/verificacion-correo/verificacion-correo.component';
+
 //Servicios
 import { UsuarioService } from './servicios/usuarios/usuario.service';
 
@@ -20,7 +21,14 @@ import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pan
 import {HttpClientModule} from '@angular/common/http';
 import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuario/configuracion-usuario.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlider, MatSliderModule } from '@angular/material/slider';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -30,16 +38,24 @@ import { FormsModule } from '@angular/forms';
     RegistrateComponent,
     VerificacionCorreoComponent,
     PantallaPrincipalComponent,
-    ConfiguracionUsuarioComponent
+    ConfiguracionUsuarioComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatStepperModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpClientModule,
-    FormsModule
+    MatSliderModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatListModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     UsuarioService

@@ -6,6 +6,7 @@ import { RegistrateComponent } from './componentes/registrate/registrate.compone
 import { VerificacionCorreoComponent } from './componentes/verificacion-correo/verificacion-correo.component';
 import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pantalla-principal.component';
 import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuario/configuracion-usuario.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/inicio',pathMatch:'full'},
@@ -14,7 +15,9 @@ const routes: Routes = [
   {path:'registrate', component: RegistrateComponent},
   {path:'verificacion-correo', component: VerificacionCorreoComponent},
   {path:'pantalla-principal', component: PantallaPrincipalComponent},
-  {path:'configuracion-usuario', component: ConfiguracionUsuarioComponent}
+  {path:'configuracion-usuario', component: ConfiguracionUsuarioComponent},
+  {path:'registro', component: RegistroComponent}
+
 ];
 
 @NgModule({
