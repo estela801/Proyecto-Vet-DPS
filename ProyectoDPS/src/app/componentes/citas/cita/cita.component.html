@@ -1,0 +1,44 @@
+<div class="card mt-5">
+    <div class="card-body">
+
+        <!-- Cuando el evento onSubmit , suceda se va pasar todo el formulario 'productForm' -->
+        <form #citaForm="ngForm" (ngSubmit)="onSubmit(citaForm)">
+
+            <!-- TO UPDATE -->
+            <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="citaService.selectedCita.$key">
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="citaService.selectedCita.nombre" placeholder="Nombre cliente">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="doctorAsig" #doctorAsig="ngModel" [(ngModel)]="citaService.selectedCita.doctorAsig" placeholder="Doctor asignado">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="situacion" #situacion="ngModel" [(ngModel)]="citaService.selectedCita.situacion" placeholder="situacion">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="descripcion" #descripcion="ngModel" [(ngModel)]="citaService.selectedCita.descripcion" placeholder="Descripcion">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="fecha" #fecha="ngModel" [(ngModel)]="citaService.selectedCita.fecha" placeholder="Fecha">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="hora" #hora="ngModel" [(ngModel)]="citaService.selectedCita.hora" placeholder="Hora">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-plus-circle"></i> Agregar cita
+                </button>
+                <button class="btn btn-secondary" type="reset" (click)="resetForm(citaForm)">
+                    <i class="fas fa-sync-alt"></i> Limpiar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
