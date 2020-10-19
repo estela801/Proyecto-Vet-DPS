@@ -1,0 +1,80 @@
+<div class="aside" style=" float: left;">
+    <app-menu></app-menu>
+</div>
+<body style="background-color: #fff;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+				<form class="login100-form validate-form"  #agregarForm="ngForm" novalidate>
+					<div>
+						<div style="float: left;"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">	
+						</svg></div>
+						<div><span class="login100-form-title ">
+							Registrar veterinario
+						</span></div>
+					</div><br>
+					<div class="or-container">
+						<div class="line-separator"></div>
+						<div class="or-label">Ingresa los datos requeridos</div>
+						<div class="line-separator"></div>
+					</div>
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="nombre"  placeholder="Nombre completo" #nombre="ngModel" required minlength="5" [(ngModel)]="usu.nombre">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+						<div *ngIf=" nombre.invalid && (nombre.dirty || nombre.touched)">
+							<div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf=" nombre.errors.required"> El nombre es requerido!</div>
+							<div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="nombre.errors.minlength">Necesitamos el nombre completo!</div>
+						</div>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="correo" placeholder="Correo electronico" #correo="ngModel"  [(ngModel)]="usu.correo">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+
+					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="contrasena" placeholder="Contraseña" #contrasena>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+                    </div><br>
+                    
+                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="contraConfirma" placeholder="Confirma la Contraseña" #contraConfirma>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div><br>
+					
+				
+                    
+                    <div class="wrap-input100 validate-input">
+						<p>Fecha de nacimiento :</p><input class="input100" type="date" name="fechaNac" #fechaNac="ngModel" [(ngModel)]="usu.fechaNac" max="{{formattedDate}}" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+						<div style="text-align: right; color: red;" *ngIf="fechaNac.invalid && (fechaNac.dirty || fechaNac.touched)">
+							<div class="alert alert-danger" role="alert" *ngIf="fechaNac.errors.required" style="width: 95%; margin-left: 5%;">Es necesaria la fecha de nacimiento</div>
+							<div class="alert alert-danger" role="alert" *ngIf="fechaNac.errors.max" style="width: 95%; margin-left: 5%;">Fecha de nacimiento invalida!</div>
+						</div>
+                    </div><br>
+                    
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="telefono" #telefono="ngModel" placeholder="Número Telefonico" [(ngModel)]="usu.telefono" pattern="^[0-9]{4}-[0-9]{4}$" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+						<div style="color: red; text-align: right;" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+							<div *ngIf="telefono.errors.required" class="alert alert-danger" role="alert" style="width: 95%; margin-left: 5%;">Necesitamos el número telefonico</div>
+							<div *ngIf="telefono.errors.pattern" class="alert alert-danger" role="alert" style="width: 95%; margin-left: 5%;">El número telefonico no es valido! Patron(####-####)</div>
+						</div>
+					</div><br>
+
+					<div class="container-login100-form-btn m-t-20">
+						<button class="login100-form-btn" type="button"  (click)="registrar(correo.value, contrasena.value, contraConfirma.value)" [disabled]="agregarForm.invalid">
+						Registrar
+						</button>
+					</div><br>
+				</form>	
+			</div>
+		</div>
+	</div>
+</body>

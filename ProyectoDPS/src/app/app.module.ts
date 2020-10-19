@@ -24,6 +24,7 @@ import { MenuComponent } from './componentes/menu/menu.component';
 import { FormsModule } from '@angular/forms';
 import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-mascota.component';
 import { CitasComponent } from './componentes/citas/citas.component';
+import { VeterinarioComponent } from './componentes/veterinario/veterinario.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CitasComponent } from './componentes/citas/citas.component';
     ConfiguracionUsuarioComponent,
     MenuComponent,
     EnlaceMascotaComponent,
-    CitasComponent
+    CitasComponent,
+    VeterinarioComponent
   ],
   imports: [
     BrowserModule,
