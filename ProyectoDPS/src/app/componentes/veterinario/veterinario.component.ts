@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UsuarioService } from '../../servicios/usuarios/usuario.service';
+import {  UsuariovetService } from '../../servicios/usuariovet/usuariovet.service';
 import {UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
 import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
 import Swal from 'sweetalert2';
@@ -35,7 +35,7 @@ export class VeterinarioComponent implements OnInit {
 
  
   constructor(
-    public usuarioService : UsuarioService,
+    public usuarioService : UsuariovetService,
     public usuariosPHPService : UsuarioPHPService,
     public router : Router
     ) { }
@@ -89,7 +89,8 @@ export class VeterinarioComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          this.router.navigate(['veterinario']);
+            
+          this.router.navigate(['pantalla-principal']);
         })
       } if(datos['resultado'] == "NO"){
           Swal.fire({
