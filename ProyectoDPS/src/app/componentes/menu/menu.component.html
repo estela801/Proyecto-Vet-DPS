@@ -35,7 +35,7 @@
         <ul class="menu">
             <li ><a href="#"><i class="fas fa-home"></i>Inicio</a></li>
             <li (click)="onsubmenu1()"><a ><i class="fas fa-user"></i>Agenda</a><ul>
-                <li *ngIf ="submenu1 == true" routerLink="/inicio-sesion"><a>Agendar Cita</a></li>
+                <li *ngIf ="submenu1 == true && usuarioPHP.tipo== 2" routerLink="/inicio-sesion" routerLink="/citas-creacion"><a>Agendar Cita</a></li>
                 <li *ngIf ="submenu1 == true"><a>Ver Citas</a></li>
             </ul></li>
             <li (click)="onSubmenu2()"><a><i class="fas fa-address-card"></i>Mascotas</a><ul>

@@ -204,7 +204,7 @@ iframe {
 
 
 /*---------------------------------------------*/
-input.input100 {
+input.input100 , textarea, .textarea{
   height: 68px;
   padding: 0 25px 0 25px;
 }

@@ -31,6 +31,7 @@ export class PantallaPrincipalComponent implements OnInit {
     this.tenerMascota(this.usuarioService.usuarioDatos.email);
   }
 
+  //Si no esta registrado en MySQL
   onRegistradoPHP(){
     this.usuariosphp.verUsuarioCli(this.usuarioService.usuarioDatos.email).subscribe(datos => {
       if(datos['resultado'] == 'OK' && datos['mensaje']== '0'){
@@ -73,7 +74,7 @@ export class PantallaPrincipalComponent implements OnInit {
       }
     })
   }
-
+//Obtener los datos del usuario
   onObtener(correo : string){
     this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
   }
@@ -88,6 +89,7 @@ export class PantallaPrincipalComponent implements OnInit {
     })
   }
 
+  //Si no hay mascota registrada al iniciar 
   enlaceMascotas(){
     Swal.fire({
       title: 'Submit your Github username',
@@ -121,7 +123,7 @@ export class PantallaPrincipalComponent implements OnInit {
             text: "Datos guardados con exito!",
             timer: 3000
           }).then(() => {
-            this.ngOnInit();
+            this.tenerMascota(this.usuarioService.usuarioDatos.email);
           })  
         }
       })

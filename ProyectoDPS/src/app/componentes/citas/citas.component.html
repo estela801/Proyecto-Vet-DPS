@@ -1,0 +1,69 @@
+<div class="aside" style=" float: left;">
+    <app-menu></app-menu>
+</div>
+ <div style=" float: left; margin-left: 38%">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-33" style="color: #AC4F1F;">
+                           Generacion de citas
+                        </span>
+                        <br>
+                        <div class="or-container">
+                            <div class="line-separator"></div>
+                            <div class="or-label">Ingresar datos necesarios</div>
+                            <div class="line-separator"></div>
+                        </div>
+                        
+                        <div class="container-login100-form-btn m-t-20">
+                            <div class="wrap-input100 validate-input" >
+                                <input class="input100" type="text" name="id_mascota" #id_mascota placeholder="Código de mascota" >
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                            </div>
+        
+                            <div class="wrap-input100 rs1 validate-input" >
+                                <textarea class="input100"  name="descripcion" #descripcion  placeholder="Descripcion del porque de la consulta" style="margin-top: 2%;"></textarea>
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                            </div><br>
+
+                            <div class="wrap-input100 validate-input ">
+                                <p style="margin-left: 5%;">Hora establecida : </p><br>
+                                <div class="form-group form-inline">
+                                <input class="input100 form-control" type="number" name="hora" #hora min="1" max="12" placeholder="Hora" style="margin-left: 20%;">
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                                <input class="input100 form-control" type="number" name="minuto" #minuto min="01" max="59" placeholder="Mins">
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                                <select class="input100 form-control" #tiempo name="tiempo">
+                                    <option value="am">am</option>
+                                    <option value="pm">pm</option>
+                                </select>
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                            </div></div><br>
+                            <div class="wrap-input100 validate-input">
+                                <p style="margin-left: 5%;">Fecha a establecer :</p><input class="input100" type="date" name="fecha" #fecha  max="{{formattedDate}}" required>
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                                <div style="text-align: right; color: red;" >
+                                    
+                                </div>
+                            </div><br>
+                            <div class="container-login100-form-btn m-t-20" style="margin-bottom: 2%; margin-top: 2%;">
+                                <button class="login100-form-btn"  type="button">
+                                    Agendar cita
+                                </button>
+                            </div><br>
+                        </div>
+                        
+                    </form>	
+                </div>
+            </div>
+        </div>
+</div>
+
+
