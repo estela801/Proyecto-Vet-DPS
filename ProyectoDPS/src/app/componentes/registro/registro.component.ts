@@ -50,7 +50,7 @@ Onsubmit(){
       showConfirmButton: false,
       timer: 1500
     }).then(() => {
-      this.router.navigate(['registro']);
+      this.router.navigate(['registro']); //CAMBIAR ESTO 
     })
 
   });
