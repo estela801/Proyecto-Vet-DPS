@@ -26,85 +26,85 @@
   
 <h3 text align="center" style="color: #00795A;">Nueva Mascota</h3>
 <div class="contenedor">
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="Mascota">
-    <form [formGroup]="Mascota" novalidate >
-      <ng-template matStepLabel>Mascota</ng-template>
-      
-        <p style="color: #C36808;" *ngIf="Mascota.get('mnombre').hasError('required') && Mascota.get('mnombre').touched" >
-          Ingrese el nombre de la mascota</p>
-            
-      <div>
-      <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Nombre" formControlName="mnombre" [(ngModel)]="mascotaModel.nombre" required>
-      </mat-form-field>
-    </div>
-    
-      <br/>
-      <p style="color: #C36808;" *ngIf="Mascota.get('nregistro').hasError('required') && Mascota.get('nregistro').touched" >
-        Ingrese el número de registro de la mascota</p>
-      <div>
-      <mat-form-field>
-        <mat-label>N° registro</mat-label>
-        <input matInput placeholder="XXXXX" formControlName="nregistro" [(ngModel)]="mascotaModel.registro_mascota" required>
-      </mat-form-field>
-    </div>
-      <br/>
-      <p style="color: #C36808;" *ngIf="Mascota.get('edad').hasError('required') && Mascota.get('edad').touched" >
-        Ingrese la edad de la mascota</p>
-      <mat-form-field>
-        <mat-label>Edad</mat-label>
-        <input type="number" matInput placeholder="Edad" formControlName="edad" [(ngModel)]="mascotaModel.edad" required>
-      </mat-form-field>
-      <br/>
-      <p style="color: #C36808;" *ngIf="Mascota.get('tipo').hasError('required') && Mascota.get('tipo').touched" >
-        Ingrese el tamaño de la mascota</p>
-      <mat-form-field>
-        <mat-label>Tipo
-        </mat-label>
-        <input matInput placeholder="Tipo" formControlName="tipo" [(ngModel)]="mascotaModel.tipo" required>
-      </mat-form-field>
-      <br/>
-      <p style="color: #C36808;" *ngIf="Mascota.get('raza').hasError('required') && Mascota.get('raza').touched" >
-        Ingrese la raza de la mascota</p>
-      <mat-form-field>
-        <mat-label>Raza</mat-label>
-        <input matInput placeholder="Raza" formControlName="raza" [(ngModel)]="mascotaModel.raza" required>
-      </mat-form-field>
-      <br/>
-      <p style="color: #C36808;" *ngIf="Mascota.get('sexo').hasError('required') && Mascota.get('sexo').touched" >
-        Ingrese el sexo de la mascota (Macho/Hembra)</p>
-      <mat-form-field>
-        <mat-label>Sexo</mat-label>
-        <input matInput placeholder="Sexo" formControlName="sexo" [(ngModel)]="mascotaModel.sexo" required>
-      </mat-form-field>
-      <br/>
-      <div>
-       <!-- <button mat-button matStepperPrevious>Atrás</button>-->
-        <button mat-button mat-raised-button matStepperNext>Siguiente</button>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="rmascota">
+      <form [formGroup]="rmascota"  novalidate >
+        <ng-template matStepLabel>Mascota</ng-template>
+        
+          <p style="color: #C36808;" *ngIf="rmascota.get('nombre').hasError('required') && rmascota.get('nombre').touched" >
+            Ingrese el nombre de la mascota</p>
+              
+        <div>
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" formControlName="nombre"  required>
+        </mat-form-field>
       </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Listo</ng-template>
-    <p>Datos completos del registro. Verifica la información</p>
-  
-    <mat-list>
-	<!-- <mat-list-item> <strong>Nombre del dueño:</strong> {{ this.Propietario.value.nombre }}</mat-list-item>
-	 <mat-list-item> <strong>Apellido del dueño:</strong> {{ this.Propietario.value.apellido }}</mat-list-item>-->
-	 <mat-list-item> <strong>Nombre de la mascota:</strong> {{ this.Mascota.value.mnombre }}</mat-list-item>
-   <mat-list-item> <strong>Número de registro de la mascota:</strong> {{ this.Mascota.value.nregistro }}</mat-list-item>
-   <mat-list-item> <strong>Tamaño de la mascota:</strong> {{ this.Mascota.value.tipo }}</mat-list-item>
-   <mat-list-item> <strong>Raza de la mascota:</strong> {{ this.Mascota.value.raza }}</mat-list-item>
-   <mat-list-item> <strong>Sexo de la mascota:</strong> {{ this.Mascota.value.sexo }}</mat-list-item>
-	</mat-list>
-  
-    <div>
-      <button mat-button matStepperPrevious>Atrás</button>
-      <button mat-button (click)="stepper.reset()">Limpiar</button>
-      <button type="button"  mat-button mat-raised-button (click)="submit()" >Guardar</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+      
+        <br/>
+        <p style="color: #C36808;" *ngIf="rmascota.get('registro_mascota').hasError('required') && rmascota.get('registro_mascota').touched" >
+          Ingrese el número de registro de la mascota</p>
+        <div>
+        <mat-form-field>
+          <mat-label>N° registro</mat-label>
+          <input matInput placeholder="XXXXX" formControlName="registro_mascota"  required>
+        </mat-form-field>
+      </div>
+        <br/>
+        <p style="color: #C36808;" *ngIf="rmascota.get('edad').hasError('required') && rmascota.get('edad').touched" >
+          Ingrese la edad de la mascota</p>
+        <mat-form-field>
+          <mat-label>Edad</mat-label>
+          <input type="number" matInput placeholder="Edad" formControlName="edad"  required>
+        </mat-form-field>
+        <br/>
+        <p style="color: #C36808;" *ngIf="rmascota.get('tipo').hasError('required') && rmascota.get('tipo').touched" >
+          Ingrese el tamaño de la mascota</p>
+        <mat-form-field>
+          <mat-label>Tipo
+          </mat-label>
+          <input matInput placeholder="Tipo" formControlName="tipo"  required>
+        </mat-form-field>
+        <br/>
+        <p style="color: #C36808;" *ngIf="rmascota.get('raza').hasError('required') && rmascota.get('raza').touched" >
+          Ingrese la raza de la mascota</p>
+        <mat-form-field>
+          <mat-label>Raza</mat-label>
+          <input matInput placeholder="Raza" formControlName="raza"  required>
+        </mat-form-field>
+        <br/>
+        <p style="color: #C36808;" *ngIf="rmascota.get('sexo').hasError('required') && rmascota.get('sexo').touched" >
+          Ingrese el sexo de la mascota (Macho/Hembra)</p>
+        <mat-form-field>
+          <mat-label>Sexo</mat-label>
+          <input matInput placeholder="Sexo" formControlName="sexo"  required>
+        </mat-form-field>
+        <br/>
+        <div>
+         <!-- <button mat-button matStepperPrevious>Atrás</button>-->
+          <button mat-button mat-raised-button matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Listo</ng-template>
+      <p>Datos completos del registro. Verifica la información</p>
+    
+      <mat-list>
+    <!-- <mat-list-item> <strong>Nombre del dueño:</strong> {{ this.Propietario.value.nombre }}</mat-list-item>
+     <mat-list-item> <strong>Apellido del dueño:</strong> {{ this.Propietario.value.apellido }}</mat-list-item>-->
+     <mat-list-item> <strong>Nombre de la mascota:</strong> {{ this.rmascota.value.nombre }}</mat-list-item>
+     <mat-list-item> <strong>Número de registro de la mascota:</strong> {{ this.rmascota.value.registro_mascota }}</mat-list-item>
+     <mat-list-item> <strong>Tamaño de la mascota:</strong> {{ this.rmascota.value.tipo }}</mat-list-item>
+     <mat-list-item> <strong>Raza de la mascota:</strong> {{ this.rmascota.value.raza }}</mat-list-item>
+     <mat-list-item> <strong>Sexo de la mascota:</strong> {{ this.rmascota.value.sexo }}</mat-list-item>
+    </mat-list>
+    
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button (click)="stepper.reset()">Limpiar</button>
+        <button type="submit" mat-button mat-raised-button (click)="Onsubmit()" >Guardar</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>
