@@ -1,21 +1,28 @@
 <?php
-header("Access-Control-Allow-Origin: * ");
+header("Access-Control-Allow-Origin: http://localhost:4200 ");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-$jsonMascota = json_decode(file_get_contents("php://input"));
-
-require("conexion.php");
+ header('Access-Control-Allow-methods:  GET, OPTIONS, PUT');
+require "conexion.php" ;
 $conexion=retornarConexion();
+$jsonMascota = json_decode(file_get_contents("php://input"));
+print_r($jsonMascota);
 
-mysqli_query($conexion,"insert into tb_mascotas(nombre,registro_mascota,edad,tipo, raza,sexo)
- values ('$jsonMascota->nombre', '$jsonMascota->registro_mascota', '$jsonMascota->edad', '$jsonMascota->tipo', '$jsonMascota->raza', '$jsonMascota->sexo')");
+$nombre= mysqli_real_escape_string($conexion, trim($jsonMascota->nombre));
+$registro= mysqli_real_escape_string($conexion, trim($jsonMascota->registro_mascota));
+$edad= mysqli_real_escape_string($conexion, trim($jsonMascota->edad));
+$sexo= mysqli_real_escape_string($conexion, trim($jsonMascota->sexo));
+$tipo= mysqli_real_escape_string($conexion, trim($jsonMascota->tipo));
+$raza= mysqli_real_escape_string($conexion, trim($jsonMascota->raza));
 
- class Result {}
+$consulta= "INSERT INTO `tb_mascotas` (`nombre`, `registro_mascota`,`edad`,`sexo`,`tipo`, `raza`) VALUES 
+('{$nombre}','{$registro}','{$edad}','{$sexo}','{$tipo}','{$raza}')";
+echo $consulta;
 
- $response = new Result();
- $response->resultado = 'OK';
- $response->mensaje = 'datos grabados';
+$resultado=mysqli_query($conexion,$consulta);
 
- header('Content-Type: application/json');
- echo json_encode($response);  
+
+
+
+
 
 ?>
