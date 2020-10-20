@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import { CitaService } from '../../servicios/citas/cita.service';
 import { Citas } from '../../modelos/citas';
+import { Usuario } from '../../modelos/usuarios/usuario';
+import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,17 +15,20 @@ import Swal from 'sweetalert2';
 export class CitasComponent implements OnInit {
 
   cita : Citas = new Citas();
+  public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
+  usu : Usuario = new Usuario();
+
   constructor(
     public usuarioService : UsuarioService,
     public citaService : CitaService
   ) { }
 
   ngOnInit(): void {
+    this.usuarioDatos$.subscribe(datos => this.usu = datos[0]);
   }
 
-
   agregarCita(){
-    this.cita.correo_vet = this.usuarioService.usuarioDatos.email.value;
+    this.cita.correo_vet = this.usu.email;
     this.citaService.insertarCita(this.cita).subscribe((datos) => {
       if(datos["msg"]=="1"){
         Swal.fire({

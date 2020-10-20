@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Usuario } from '../../modelos/usuarios/usuario';
+import { Observable }from 'rxjs';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import {UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
 import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
@@ -16,20 +17,22 @@ export class ConfiguracionUsuarioComponent implements OnInit {
   mes = this.ahora.getMonth();
   formattedDate : any = this.ahora.getFullYear() +'-'+ this.mes +'-'+ this.ahora.getDay();
 
-  mesNac:number = null;
+  /*mesNac:number = null;
   diaNac : number = null;
-  anioNac : number = null;
+  anioNac : number = null;*/
+
+  public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
+  usuario  : Usuario = new Usuario();
 
   usuariosphp = null;
   usu = {
-    correo:this.usuarioService.usuarioDatos.email,
-    nombre:null,
-    fechaNac: this.formattedDate,
-    telefono: null,
-    tipo : 1
-  }
-
-  hoy:number = Date.now();
+      correo:this.usuario.email,
+      nombre:null,
+      fechaNac: this.formattedDate,
+      telefono: null,
+      tipo : 1
+      }
+    
 
  
   constructor(
@@ -38,7 +41,9 @@ export class ConfiguracionUsuarioComponent implements OnInit {
     public router : Router
     ) { }
 
+   
   ngOnInit(): void {
+    this.usuarioDatos$.subscribe(datos => this.usuario = datos[0]);
   }
 
 

@@ -1,11 +1,14 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
-import { HttpClient } from '@angular/common/http';
+//Se debe importar la clase
+import { Usuario } from '../../modelos/usuarios/usuario';
 import { UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
 import Swal from 'sweetalert2';
 import { Router} from '@angular/router';
-import { throws } from 'assert';
+//Para el arreglo
+ import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-pantalla-principal',
@@ -13,7 +16,9 @@ import { throws } from 'assert';
   styleUrls: ['./pantalla-principal.component.css']
 })
 export class PantallaPrincipalComponent implements OnInit {
-
+  //Como areglo con los datos del usuario, esto esta en el service, se tiene que importar la lib de observable
+  public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
+  usu : any;
   constructor(
     public usuarioService: UsuarioService,
     public usuariosphp: UsuarioPHPService,
@@ -25,7 +30,7 @@ export class PantallaPrincipalComponent implements OnInit {
 
   mascotaRegistrada : boolean;
 
-  ngOnInit() : void{
+  ngOnInit(){
     this.onRegistradoPHP();
   }
 
@@ -37,7 +42,10 @@ export class PantallaPrincipalComponent implements OnInit {
 
   //Si no esta registrado en MySQL
   onRegistradoPHP(){
-    this.usuariosphp.verUsuarioCli(this.usuarioService.usuarioDatos.email).subscribe(datos => {
+    //el arrglo con los datos del usuario le hacemos subscribe para que con sus datos podamos llenar las funciones 
+    this.usuarioDatos$.subscribe(info =>{
+      //En este caso en la variable info van los datos, asi que info.email es el email del usuario
+    this.usuariosphp.verUsuarioCli(info.email).subscribe(datos => {
       if(datos['resultado'] == 'OK' && datos['mensaje']== '0'){
         Swal.fire({
           title: 'Configuracion inicial',
@@ -54,19 +62,11 @@ export class PantallaPrincipalComponent implements OnInit {
               this.router.navigate(['configuracion-usuario']);
             });
           }else{
-            this.usuarioService.cerrarSesion();
+            this.usuarioService.logout();
           }
         })
       }else if(datos['resultado'] == 'OK' && datos['mensaje'] == '1'){
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Si estas registrado!',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => {
-          this.onObtener(this.usuarioService.usuarioDatos.email);
-        });
+          this.onObtener(info.email);
       }else{
         Swal.fire({
           icon: 'error',
@@ -78,6 +78,7 @@ export class PantallaPrincipalComponent implements OnInit {
           }
         )
       }
+    })
     })
   }
 
@@ -104,7 +105,7 @@ export class PantallaPrincipalComponent implements OnInit {
       confirmButtonText: 'Look up',
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
-      this.usuariosphp.enlaceMascota(this.usuarioService.usuarioDatos.email, result.value ).subscribe(datos => {
+      this.usuariosphp.enlaceMascota(this.usu.email, result.value ).subscribe(datos => {
         if(datos["resultado"] == "NO" && datos["msg"] == 0){
           Swal.fire({
             icon: "error",
@@ -126,7 +127,7 @@ export class PantallaPrincipalComponent implements OnInit {
             text: "Datos guardados con exito!",
             timer: 3000
           }).then(() => {
-            this.tenerMascota(this.usuarioService.usuarioDatos.email);
+            this.tenerMascota(this.usu.email);
           })  
         }
       })

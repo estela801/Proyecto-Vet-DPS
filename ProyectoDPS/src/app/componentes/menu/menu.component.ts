@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
 import {UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
+import { Usuario } from '../../modelos/usuarios/usuario';
+import { Observable } from 'rxjs';
+import { async } from 'rxjs/internal/scheduler/async';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -14,13 +18,17 @@ export class MenuComponent implements OnInit {
   submenu3 : boolean = false;
   submenu4 : boolean = false;
   usuarioPHP : Usuariosphp = new Usuariosphp() ;
+  public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
+  usu : Usuario = new Usuario();
   constructor(
     public usuarioService : UsuarioService,
-    public usuarioServicePHP : UsuarioPHPService
+    public usuarioServicePHP : UsuarioPHPService,
+    private router : Router
   ) { }
 
-  ngOnInit(): void {
-    this.onObtener(this.usuarioService.usuarioDatos.email)
+  ngOnInit() {
+    this.onObtener();
+    
   }
 /* Opciones para funcionalidad del menu */
   onsubmenu1(){
@@ -55,8 +63,16 @@ export class MenuComponent implements OnInit {
     this.submenu3 = false;
   }
   //Obtener informacion de usuario
-  onObtener(correo : string){
-    this.usuarioServicePHP.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
-    console.log(correo);
+  async onObtener(){
+    this.usuarioDatos$.subscribe(datos =>{
+      this.usuarioServicePHP.obtenerIniciado(datos.email).subscribe(result => this.usuarioPHP = result[0]);
+    console.log(this.usu.email);
+    });
+    
+  }
+
+  cerrarSesion(){
+    this.usuarioService.logout();
+    this.router.navigate(['inicio-sesion']);
   }
 }
