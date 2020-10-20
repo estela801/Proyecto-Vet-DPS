@@ -9,27 +9,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio-sesion.component.css']
 })
 export class InicioSesionComponent implements OnInit {
-
+ 
+  public usuario = {
+    correo : null,
+    contra : null
+   }
   constructor(public usuarioService : UsuarioService, private router: Router) { }
-
   ngOnInit(): void {
+    
   }
 
-  onVerificando(correo, contra){
-    if(correo == null || correo== "" || correo==" "){
+  onVerificando(){
+    
+    if(this.usuario.correo == null || this.usuario.correo == "" || this.usuario.correo ==" "){
         Swal.fire({
           icon: 'error',
           title: 'Error!',
           text: 'Usuario no puede estar vacio!'
         })
-    }else if(contra == null || contra == "" || correo== " "){
+    }else if(this.usuario.contra == null || this.usuario.contra == "" || this.usuario.contra== " "){
       Swal.fire({
         icon: 'error',
         title: 'Error',
         text: 'Contraseña no puede estar vacia!'
       })
     }else{
-      this.usuarioService.inicioSesion(correo, contra);
+      this.usuarioService.inicioSesion(this.usuario.correo, this.usuario.contra);
+      console.log(this.usuarioService.usuarioDatos.email);
     }
   }
 }

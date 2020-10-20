@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-mascota.component';
 import { CitasComponent } from './componentes/citas/citas.component';
 
+import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { CitasComponent } from './componentes/citas/citas.component';
     FormsModule
   ],
   providers: [
-    UsuarioService
+    UsuarioService,
+    UsuarioPHPService
   ],
   bootstrap: [AppComponent]
 })

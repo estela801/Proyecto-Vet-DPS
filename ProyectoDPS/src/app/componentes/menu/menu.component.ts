@@ -57,5 +57,6 @@ export class MenuComponent implements OnInit {
   //Obtener informacion de usuario
   onObtener(correo : string){
     this.usuarioServicePHP.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
+    console.log(correo);
   }
 }
