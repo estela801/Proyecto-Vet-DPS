@@ -4,4 +4,5 @@ export class Citas {
     correo_vet : string;
     descripcion : string;
     fecha : string;
+    hora : string;
 }

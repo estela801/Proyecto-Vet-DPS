@@ -22,28 +22,33 @@ export class UsuarioService {
     this.afAuth.authState.subscribe(usuario => {
       if (usuario) {
         this.usuarioDatos= usuario;
-        localStorage.setItem('usuario', JSON.stringify(this.usuarioDatos));
-        JSON.parse(localStorage.getItem('usuario'));
+        localStorage.setItem('user', JSON.stringify(this.usuarioDatos));
+        JSON.parse(localStorage.getItem('user'));
       } else {
-        localStorage.setItem('usuario', null);
-        JSON.parse(localStorage.getItem('usuario'));
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
       }
     })
   }
 
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user !== null && user.emailVerified !== false) ? true : true;
+  }
   //Inicio de sesión con Correo y Contraseña
   inicioSesion(correo, contrasena){
     return this.afAuth.signInWithEmailAndPassword(correo, contrasena).then((result) => {
       if(result.user.emailVerified && result){
+        this.SetUsuarioDatos(result.user);
         this.ngZone.run(() => {
           this.router.navigate(['pantalla-principal']);
         });
-        this.SetUsuarioDatos(result.user);
+        //this.SetUsuarioDatos(result.user);
       } else{
         Swal.fire({
           icon: 'error',
           title: 'Error!',
-          text: 'Correo no verificado!'
+          text: 'Correo :'+result.user.email+' no verificado!'
         })
       }
     }).catch((error) => {
@@ -52,14 +57,14 @@ export class UsuarioService {
   }
 
   SetUsuarioDatos(user){
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuario/${user.uid}`);
-    const userData: Usuario = {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const usuarioDatos: Usuario = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       emailVerified: user.emailVerified
     }
-    return userRef.set(userData, {
+    return userRef.set(usuarioDatos, {
       merge: true
     })
   }
@@ -103,6 +108,7 @@ export class UsuarioService {
   cerrarSesion(){
     return this.afAuth.signOut().then(() => {
       localStorage.setItem('user', null);
+      localStorage.removeItem('user');
       this.router.navigate(['inicio-sesion']);
     })
   }

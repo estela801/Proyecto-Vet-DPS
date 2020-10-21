@@ -16,7 +16,7 @@ export class PantallaPrincipalComponent implements OnInit {
 
   constructor(
     public usuarioService: UsuarioService,
-    private usuariosphp: UsuarioPHPService,
+    public usuariosphp: UsuarioPHPService,
     public router: Router,
     public ngZone: NgZone
     ) { }
@@ -25,10 +25,14 @@ export class PantallaPrincipalComponent implements OnInit {
 
   mascotaRegistrada : boolean;
 
-  ngOnInit(){
+  ngOnInit() : void{
     this.onRegistradoPHP();
-    this.onObtener(this.usuarioService.usuarioDatos.email);
-    this.tenerMascota(this.usuarioService.usuarioDatos.email);
+  }
+
+  //Obtener los datos del usuario
+  onObtener(correo : string){
+    this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
+    this.tenerMascota(correo);
   }
 
   //Si no esta registrado en MySQL
@@ -60,7 +64,9 @@ export class PantallaPrincipalComponent implements OnInit {
           title: 'Si estas registrado!',
           showConfirmButton: false,
           timer: 1500
-        })
+        }).then(() => {
+          this.onObtener(this.usuarioService.usuarioDatos.email);
+        });
       }else{
         Swal.fire({
           icon: 'error',
@@ -74,10 +80,7 @@ export class PantallaPrincipalComponent implements OnInit {
       }
     })
   }
-//Obtener los datos del usuario
-  onObtener(correo : string){
-    this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
-  }
+
 
   tenerMascota(correo:string){
     this.usuariosphp.tenerMascota(correo).subscribe( datos => {

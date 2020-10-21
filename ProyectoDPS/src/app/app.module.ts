@@ -26,6 +26,7 @@ import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-masc
 import { CitasComponent } from './componentes/citas/citas.component';
 import { VeterinarioComponent } from './componentes/veterinario/veterinario.component';
 
+import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { VeterinarioComponent } from './componentes/veterinario/veterinario.comp
     FormsModule
   ],
   providers: [
-    UsuarioService
+    UsuarioService,
+    UsuarioPHPService
   ],
   bootstrap: [AppComponent]
 })

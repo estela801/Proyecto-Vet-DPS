@@ -18,7 +18,7 @@
                             <div class="or-label">Citas para el día de ahora</div>
                             <div class="line-separator"></div>
                         </div>
-                        <div [hidden]="mascotaRegistrada == true">
+                        <div [hidden]="mascotaRegistrada == true" *ngIf="usuarioPHP.tipo == 1">
                         <div class="text-center p-t-45 p-b-4 mt-5">
                             <span class="txt1" style="color: black;">
                                 No tienes mascotas registradas! Haz el registro de ellas.<br>
