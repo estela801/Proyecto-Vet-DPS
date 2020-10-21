@@ -34,19 +34,6 @@
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="contrasena" placeholder="Contraseña" #contrasena>
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-                    </div><br>
-                    
-                    <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="contraConfirma" placeholder="Confirma la Contraseña" #contraConfirma>
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div><br>
-					
-				
                     
                     <div class="wrap-input100 validate-input">
 						<p>Fecha de nacimiento :</p><input class="input100" type="date" name="fechaNac" #fechaNac="ngModel" [(ngModel)]="usu.fechaNac" max="{{formattedDate}}" required>
@@ -69,7 +56,7 @@
 					</div><br>
 
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn" type="button"  (click)="registrar(correo.value, contrasena.value, contraConfirma.value)" [disabled]="agregarForm.invalid">
+						<button class="login100-form-btn" type="button"  (click)="registrar()" [disabled]="agregarForm.invalid">
 						Registrar
 						</button>
 					</div><br>

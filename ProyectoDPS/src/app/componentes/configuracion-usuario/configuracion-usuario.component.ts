@@ -19,7 +19,7 @@ export class ConfiguracionUsuarioComponent implements OnInit {
 
   /*mesNac:number = null;
   diaNac : number = null;
-  anioNac : number = null;*/
+  anioNac : number = null;*/ 
 
   public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
   usuario  : Usuario = new Usuario();
