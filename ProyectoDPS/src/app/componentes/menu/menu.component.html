@@ -51,7 +51,7 @@
             <!--Aqui empieza le menu para agegar veterinarios-->
             <li (click)="onSubmenu4()" *ngIf="usuarioPHP.tipo == 2" ><a><i class="fas fa-address-card"></i>Trabajadores</a><ul>
                 <!--Servira para agregar veterinarios-->
-                <li *ngIf ="submenu4 == true && usuarioPHP.tipo == 2" ><a>Agregar veterinarios</a></li>
+                <li *ngIf ="submenu4 == true && usuarioPHP.tipo == 2" routerLink="/veterinario" ><a>Agregar veterinarios</a></li>
                 <!--Ver todos los veterinarios-->
                 <li *ngIf ="submenu4 == true && usuarioPHP.tipo == 2"><a>Ver veterinarios</a></li>
             </ul></li>
