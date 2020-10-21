@@ -6,6 +6,7 @@ import {UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.servic
 import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class VeterinarioComponent implements OnInit {
   diaNac : number = null;
   anioNac : number = null;*/ 
 
-  public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
+ 
   usuario  : Usuario = new Usuario();
 
   usuariosphp = null;
@@ -47,13 +48,9 @@ export class VeterinarioComponent implements OnInit {
   ngOnInit(): void {
     //this.usuarioDatos$.subscribe(datos => this.usuario = datos[0]);
   }
-registrar(){
-  this.configPHP();
- 
 
-}
 
-  configPHP(){
+  configPHP(form : NgForm){
     
      
       if( this.usu.correo == null ||this.usu.nombre == null || this.usu.fechaNac == null || this.usu.telefono == null){
@@ -68,11 +65,12 @@ registrar(){
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Configuracion realizada con exito!',
+            title: 'Veterinario agregado con éxito!',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['pantalla-principal']);
+          form.resetForm();
+            this.router.navigate(['veterinario']);
           })
         } if(datos['resultado'] == "NO"){
             Swal.fire({
@@ -82,7 +80,7 @@ registrar(){
             })
           }
         })
-      }
+      } 
      
   }
   
