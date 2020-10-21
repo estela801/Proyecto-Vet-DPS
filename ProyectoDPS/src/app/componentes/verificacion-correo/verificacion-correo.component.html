@@ -7,7 +7,7 @@
 					<span class="login100-form-title p-b-33">
 						Verificación del Correo
 					</span><br>
-					<div *ngIf="usuarioService.usuarioDatos as usuario">
+					<div *ngIf="usuarioDatos$ | async as usuario; else cargando ">
                     <div class="text-center p-t-45 p-b-4">
                         <span class="txt1">
                             Se ha enviado un correo de verificación al correo :
@@ -39,4 +39,7 @@
 			</div>
 		</div>
 	</div>
+	<ng-template #cargando>
+		Cargando...
+	</ng-template>
 </body>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Usuario } from '../../modelos/usuarios/usuario';
+import { Observable }from 'rxjs';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import {UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
 import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
@@ -16,20 +17,22 @@ export class ConfiguracionUsuarioComponent implements OnInit {
   mes = this.ahora.getMonth();
   formattedDate : any = this.ahora.getFullYear() +'-'+ this.mes +'-'+ this.ahora.getDay();
 
-  mesNac:number = null;
+  /*mesNac:number = null;
   diaNac : number = null;
-  anioNac : number = null;
+  anioNac : number = null;*/
+
+  public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
+  usuario  : Usuario = new Usuario();
 
   usuariosphp = null;
   usu = {
-    correo:this.usuarioService.usuarioDatos.email,
-    nombre:null,
-    fechaNac: this.formattedDate,
-    telefono: null,
-    tipo : 1
-  }
-
-  hoy:number = Date.now();
+      correo:null,
+      nombre:null,
+      fechaNac: this.formattedDate,
+      telefono: null,
+      tipo : 1
+      }
+    
 
  
   constructor(
@@ -38,38 +41,43 @@ export class ConfiguracionUsuarioComponent implements OnInit {
     public router : Router
     ) { }
 
+   
   ngOnInit(): void {
+    //this.usuarioDatos$.subscribe(datos => this.usuario = datos[0]);
   }
 
 
   configPHP(){
-    if(this.usu.nombre == null || this.usu.fechaNac == null || this.usu.telefono == null){
-      Swal.fire({
-        icon: 'error',
-        title: 'Error!',
-        text: 'No puedes dejar datos vacios!'
-      })
-    }else{
-    this.usuariosPHPService.insertarPHP(this.usu).subscribe(datos => {
-      if(datos['resultado'] == 'OK'){
+    this.usuarioDatos$.subscribe(info => {
+      this.usu.correo = info.email;
+      if(this.usu.nombre == null || this.usu.fechaNac == null || this.usu.telefono == null){
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Configuracion realizada con exito!',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => {
-          this.router.navigate(['pantalla-principal']);
+          icon: 'error',
+          title: 'Error!',
+          text: 'No puedes dejar datos vacios!'
         })
-      } if(datos['resultado'] == "NO"){
+      }else{
+      this.usuariosPHPService.insertarPHP(this.usu).subscribe(datos => {
+        if(datos['resultado'] == 'OK'){
           Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: ''+datos["mensaje"]
+            position: 'top-end',
+            icon: 'success',
+            title: 'Configuracion realizada con exito!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            this.router.navigate(['pantalla-principal']);
           })
-        }
-      })
-    }
+        } if(datos['resultado'] == "NO"){
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!',
+              text: ''+datos["mensaje"]
+            })
+          }
+        })
+      }
+    });  
   }
 
 }
