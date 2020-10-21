@@ -7,6 +7,7 @@ import { VerificacionCorreoComponent } from './componentes/verificacion-correo/v
 import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pantalla-principal.component';
 import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuario/configuracion-usuario.component';
 import { CitasComponent } from './componentes/citas/citas.component'
+import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-mascota.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/inicio',pathMatch:'full'},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'verificacion-correo', component: VerificacionCorreoComponent},
   {path:'pantalla-principal', component: PantallaPrincipalComponent},
   {path:'configuracion-usuario', component: ConfiguracionUsuarioComponent},
-  {path:'citas-creacion', component: CitasComponent}
+  {path:'citas-creacion', component: CitasComponent},
+  {path:'enlace-mascota', component: EnlaceMascotaComponent}
 ];
 
 @NgModule({
