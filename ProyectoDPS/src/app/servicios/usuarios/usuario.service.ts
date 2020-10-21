@@ -169,6 +169,8 @@ export class UsuarioService{
     }
   }
 
+
+
   async logout(): Promise<void> {
     try {
       await this.afAuth.signOut();

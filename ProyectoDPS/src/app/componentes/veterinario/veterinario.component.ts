@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {  UsuariovetService } from '../../servicios/usuariovet/usuariovet.service';
 import {UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
-import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
+import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -37,7 +37,8 @@ export class VeterinarioComponent implements OnInit {
   constructor(
     public usuarioService : UsuariovetService,
     public usuariosPHPService : UsuarioPHPService,
-    public router : Router
+    public router : Router,
+    
     ) { }
 
   ngOnInit(): void {
