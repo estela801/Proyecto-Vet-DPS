@@ -95,41 +95,43 @@ export class PantallaPrincipalComponent implements OnInit {
 
   //Si no hay mascota registrada al iniciar 
   enlaceMascotas(){
-    Swal.fire({
-      title: 'Submit your Github username',
-      input: 'number',
-      inputAttributes: {
-        autocapitalize: 'off'
-      },
-      showCancelButton: true,
-      confirmButtonText: 'Look up',
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      this.usuariosphp.enlaceMascota(this.usu.email, result.value ).subscribe(datos => {
-        if(datos["resultado"] == "NO" && datos["msg"] == 0){
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Revisa el código proporcionado por tu veterrinario",
-            timer: 3000
-          })
-        }else if(datos["resultado"] == "Error" && datos["msg"] == "NO"){
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Intenta más tarde",
-            timer: 3000
-          })  
-        }else if(datos["resultado"] == "OK" && datos["msg"]== "datos grabados"){
-          Swal.fire({
-            icon: "success",
-            title: "Exito",
-            text: "Datos guardados con exito!",
-            timer: 3000
-          }).then(() => {
-            this.tenerMascota(this.usu.email);
-          })  
-        }
+    this.usuarioDatos$.subscribe(info => {
+      Swal.fire({
+        title: 'Ingresa el codgo tu mascota!, Recuerda este codigo fue dado por tu veterinario.',
+        input: 'number',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Ingresar',
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        this.usuariosphp.enlaceMascota(info.email, result.value ).subscribe(datos => {
+          if(datos["resultado"] == "NO" && datos["msg"] == 0){
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Revisa el código proporcionado por tu veterrinario",
+              timer: 3000
+            })
+          }else if(datos["resultado"] == "Error" && datos["msg"] == "NO"){
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Intenta más tarde",
+              timer: 3000
+            })  
+          }else if(datos["resultado"] == "OK" && datos["msg"]== "datos grabados"){
+            Swal.fire({
+              icon: "success",
+              title: "Exito",
+              text: "Datos guardados con exito!",
+              timer: 3000
+            }).then(() => {
+              this.tenerMascota(info.email);
+            })  
+          }
+        })
       })
     })
   }

@@ -24,12 +24,13 @@ export class CitasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.usuarioDatos$.subscribe(datos => this.usu = datos[0]);
+    
   }
 
   agregarCita(){
-    this.cita.correo_vet = this.usu.email;
-    this.citaService.insertarCita(this.cita).subscribe((datos) => {
+    this.usuarioDatos$.subscribe(info => {
+      this.cita.correo_vet = info.email;
+       this.citaService.insertarCita(this.cita).subscribe((datos) => {
       if(datos["msg"]=="1"){
         Swal.fire({
           icon: 'warning',
@@ -51,6 +52,7 @@ export class CitasComponent implements OnInit {
           (<HTMLFormElement>document.getElementById("citas")).reset();
         })
       }
+      })
     })
   }
 

@@ -64,15 +64,24 @@ export class MenuComponent implements OnInit {
   }
   //Obtener informacion de usuario
   async onObtener(){
-    this.usuarioDatos$.subscribe(datos =>{
+    try{
+      await this.usuarioDatos$.subscribe(datos =>{
       this.usuarioServicePHP.obtenerIniciado(datos.email).subscribe(result => this.usuarioPHP = result[0]);
-    console.log(this.usu.email);
-    });
+      console.log(this.usu.email);
+      });
+    }catch(error){
+      console.log(error);
+    }
+    
     
   }
 
-  cerrarSesion(){
-    this.usuarioService.logout();
-    this.router.navigate(['inicio-sesion']);
+  async cerrarSesion(){
+    try{
+      await this.usuarioService.logout();
+       this.router.navigate(['inicio-sesion']);
+    }catch(error){
+      console.log(error);
+    }
   }
 }

@@ -26,7 +26,7 @@ export class ConfiguracionUsuarioComponent implements OnInit {
 
   usuariosphp = null;
   usu = {
-      correo:this.usuario.email,
+      correo:null,
       nombre:null,
       fechaNac: this.formattedDate,
       telefono: null,
@@ -43,38 +43,41 @@ export class ConfiguracionUsuarioComponent implements OnInit {
 
    
   ngOnInit(): void {
-    this.usuarioDatos$.subscribe(datos => this.usuario = datos[0]);
+    //this.usuarioDatos$.subscribe(datos => this.usuario = datos[0]);
   }
 
 
   configPHP(){
-    if(this.usu.nombre == null || this.usu.fechaNac == null || this.usu.telefono == null){
-      Swal.fire({
-        icon: 'error',
-        title: 'Error!',
-        text: 'No puedes dejar datos vacios!'
-      })
-    }else{
-    this.usuariosPHPService.insertarPHP(this.usu).subscribe(datos => {
-      if(datos['resultado'] == 'OK'){
+    this.usuarioDatos$.subscribe(info => {
+      this.usu.correo = info.email;
+      if(this.usu.nombre == null || this.usu.fechaNac == null || this.usu.telefono == null){
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Configuracion realizada con exito!',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => {
-          this.router.navigate(['pantalla-principal']);
+          icon: 'error',
+          title: 'Error!',
+          text: 'No puedes dejar datos vacios!'
         })
-      } if(datos['resultado'] == "NO"){
+      }else{
+      this.usuariosPHPService.insertarPHP(this.usu).subscribe(datos => {
+        if(datos['resultado'] == 'OK'){
           Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: ''+datos["mensaje"]
+            position: 'top-end',
+            icon: 'success',
+            title: 'Configuracion realizada con exito!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            this.router.navigate(['pantalla-principal']);
           })
-        }
-      })
-    }
+        } if(datos['resultado'] == "NO"){
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!',
+              text: ''+datos["mensaje"]
+            })
+          }
+        })
+      }
+    });  
   }
 
 }
