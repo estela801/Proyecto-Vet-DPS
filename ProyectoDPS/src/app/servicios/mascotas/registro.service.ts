@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class RegistroService {
-  url = 'http://localhost:80/vetDPS/';
+  url = 'https://vet-dps.000webhostapp.com/Recursos/';
 
   constructor(private http: HttpClient) { }
   registrarMascota(mascota:Mascota){

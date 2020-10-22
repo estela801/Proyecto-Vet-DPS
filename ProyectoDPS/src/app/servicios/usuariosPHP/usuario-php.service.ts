@@ -7,7 +7,7 @@ import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp'
 })
 export class UsuarioPHPService {
 
-  url = 'http://localhost:80/vetDPS/';
+  url = 'https://vet-dps.000webhostapp.com/Recursos/';
   constructor(private http: HttpClient) { }
   
   verUsuarioCli(correo : string){

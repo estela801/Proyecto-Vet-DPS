@@ -33,6 +33,7 @@ import { CitasComponent } from './componentes/citas/citas.component';
 import { VeterinarioComponent } from './componentes/veterinario/veterinario.component';
 
 import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,7 @@ import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
     MatButtonModule,
     MatListModule,
     MatStepperModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     UsuarioService,
