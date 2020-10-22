@@ -9,6 +9,7 @@ import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuar
 import { CitasComponent } from './componentes/citas/citas.component'
 import { VeterinarioComponent } from './componentes/veterinario/veterinario.component';
 
+import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-mascota.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/inicio',pathMatch:'full'},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'pantalla-principal', component: PantallaPrincipalComponent},
   {path:'configuracion-usuario', component: ConfiguracionUsuarioComponent},
   {path:'citas-creacion', component: CitasComponent},
-  {path:'veterinario', component:VeterinarioComponent}
+  {path:'veterinario', component:VeterinarioComponent},
+  {path:'enlace-mascota', component: EnlaceMascotaComponent}
 ];
 
 @NgModule({

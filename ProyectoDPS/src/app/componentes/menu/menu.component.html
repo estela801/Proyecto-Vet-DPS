@@ -33,13 +33,13 @@
     <div class="sidebar">
         <h2>Menú Principal</h2>
         <ul class="menu">
-            <li ><a href="#"><i class="fas fa-home"></i>Inicio</a></li>
+            <li ><a  routerLink="/pantalla-principal"><i class="fas fa-home"></i>Inicio</a></li>
             <li (click)="onsubmenu1()"><a ><i class="fas fa-user"></i>Agenda</a><ul>
-                <li *ngIf ="submenu1 == true && usuarioPHP.tipo== 2" routerLink="/inicio-sesion" routerLink="/citas-creacion"><a>Agendar Cita</a></li>
+                <li *ngIf ="submenu1 == true && usuarioPHP.tipo== 2" routerLink="/citas-creacion"><a>Agendar Cita</a></li>
                 <li *ngIf ="submenu1 == true"><a>Ver Citas</a></li>
             </ul></li>
             <li (click)="onSubmenu2()"><a><i class="fas fa-address-card"></i>Mascotas</a><ul>
-                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 1" ><a>Agregar a mis mascotas</a></li>
+                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 1" routerLink="/enlace-mascota"><a>Enlazar mis mascotas</a></li>
                 <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 1" ><a>Ver mis mascotas</a></li>
                 <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2"><a>Agregar mascotas</a></li>
                 <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2"><a>Ver Pacientes</a></li>
