@@ -1,0 +1,43 @@
+
+<div class="aside" style=" float: left;">
+    <app-menu></app-menu>
+</div>
+ <div style=" float: left; margin-left: 38%">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
+                    <form class="login100-form validate-form" id="enlace" #formEnlace="ngForm" novalidate>
+                        <span class="login100-form-title p-b-33">
+                            Enlazar mi mascota
+                        </span>
+                        <br>
+                        <div class="or-container">
+                            <div class="line-separator"></div>
+                            <div class="or-label">Codigo para enlace</div>
+                            <div class="line-separator"></div>
+                        </div>
+                            <div>
+                            <div class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+                                <input class="input100 form-control form-control-sm ml-3 w-75" name="codigo" #codigo="ngModel" [(ngModel)]="mascota.codigo" type="text" placeholder="Codigo mascota" required maxlength="5" minlength="5">
+                             <div class="d-table-cell align-middle" >
+                                <button type="button" class="login100-form-btn btn " style="width: fit-content;" style="margin-left: 0%;" [disabled]="formEnlace.invalid" (click)="enlace()">Enlazar</button>
+                            </div></div></div>
+                            <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+                                <div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="codigo.errors.required" >No puedes dejar el campo vacio!</div>
+                                <div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="codigo.errors.minlength || codigo.errors.maxlength" >El Id de mascota solo contiene 5 digitos.</div>
+                            </div>
+                            <br>
+                            
+                        <!--
+                        <div class="container-login100-form-btn m-t-20">
+                            <span  class="login100-form-btn" style="width: 50%; margin-left: 28%; margin-top: 5%;" (click)="enlaceMascotas()">
+                                Registrar mascotas!
+                            </span>
+                        </div>-->
+                        
+                    </form>	
+                </div>
+            </div>
+        </div>
+</div>
+
