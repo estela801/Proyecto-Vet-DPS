@@ -18,10 +18,21 @@
 						<div class="line-separator"></div>
 					</div>
 					
+<<<<<<< HEAD
+=======
+					<div class="wrap-input100 rs1 validate-input" *ngIf="usuarioDatos$ | async as usuario">
+						
+                        <input class="input100" type="text" disabled  value="correo:  {{usuario.email}}"> 
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+                    </div><br>
+					
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 					<div class="wrap-input100 validate-input">
 						<input class="input100" type="text" name="nombre"  placeholder="Nombre completo" #nombre="ngModel" required minlength="5" [(ngModel)]="usu.nombre">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
+<<<<<<< HEAD
 						<div style="text-align: right;" *ngIf=" nombre.invalid && (nombre.dirty || nombre.touched)">
 							<p style="color: red;" *ngIf=" nombre.errors.required"> Tu nombre es requerido!</p>
 							<p style="color: red;" *ngIf="nombre.errors.minlength">Necesitamos tu nombre completo!</p>
@@ -41,6 +52,21 @@
 						<div style="text-align: right; color: red;" *ngIf="fechaNac.invalid && (fechaNac.dirty || fechaNac.touched)">
 							<p *ngIf="fechaNac.errors.required" style="color: red;">Es necesaria tu fecha de nacimiento</p>
 							<p *ngIf="fechaNac.errors.max" style="color: red;">Fecha de nacimiento invalida!</p>
+=======
+						<div *ngIf=" nombre.invalid && (nombre.dirty || nombre.touched)">
+							<div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf=" nombre.errors.required"> Tu nombre es requerido!</div>
+							<div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="nombre.errors.minlength">Necesitamos tu nombre completo!</div>
+						</div>
+					</div>
+                    
+                    <div class="wrap-input100 validate-input">
+						<p>Fecha de nacimiento :</p><input class="input100" type="date" name="fechaNac" #fechaNac="ngModel" [(ngModel)]="usu.fechaNac" max="{{formattedDate}}" required>
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+						<div style="text-align: right; color: red;" *ngIf="fechaNac.invalid && (fechaNac.dirty || fechaNac.touched)">
+							<div class="alert alert-danger" role="alert" *ngIf="fechaNac.errors.required" style="width: 95%; margin-left: 5%;">Es necesaria tu fecha de nacimiento</div>
+							<div class="alert alert-danger" role="alert" *ngIf="fechaNac.errors.max" style="width: 95%; margin-left: 5%;">Fecha de nacimiento invalida!</div>
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 						</div>
                     </div><br>
                     
@@ -49,8 +75,13 @@
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 						<div style="color: red; text-align: right;" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+<<<<<<< HEAD
 							<p *ngIf="telefono.errors.required" style="color: red;">Necesitamos tu número telefonico</p>
 							<p *ngIf="telefono.errors.pattern" style="color: red;">Tu número telefonico no es valido! Patron(####-####)</p>
+=======
+							<div *ngIf="telefono.errors.required" class="alert alert-danger" role="alert" style="width: 95%; margin-left: 5%;">Necesitamos tu número telefonico</div>
+							<div *ngIf="telefono.errors.pattern" class="alert alert-danger" role="alert" style="width: 95%; margin-left: 5%;">Tu número telefonico no es valido! Patron(####-####)</div>
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 						</div>
 					</div><br>
 

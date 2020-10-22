@@ -1,0 +1,70 @@
+<div class="aside" style=" float: left;">
+    <app-menu></app-menu>
+</div>
+ <div style=" float: left; margin-left: 38%">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
+                    <form class="login100-form validate-form"  #agregarForm="ngForm" novalidate id="citas">
+                        <span class="login100-form-title p-b-33" style="color: #AC4F1F;">
+                           Generacion de citas
+                        </span>
+                        <br>
+                        <div class="or-container">
+                            <div class="line-separator"></div>
+                            <div class="or-label">Ingresar datos necesarios</div>
+                            <div class="line-separator"></div>
+                        </div>
+                        
+                        <div class="container-login100-form-btn m-t-20">
+                            <div class="wrap-input100 validate-input" >
+                                <input class="input100" type="text" name="id_mascota" #id_mascota="ngModel" placeholder="Código de mascota"  [(ngModel)]="cita.id_mascota" required minlength="5" maxlength="5">
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                                <div *ngIf="id_mascota.invalid && (id_mascota.dirty || id_mascota.touched)">
+                                    <div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="id_mascota.errors.required" >El Id de la mascota es requerido!</div>
+                                    <div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="id_mascota.errors.minlength || id_mascota.errors.maxlength" >El Id de mascota solo contiene 5 digitos.</div>
+                                </div>
+                            </div>
+        
+                            <div class="wrap-input100 rs1 validate-input" >
+                                <textarea class="input100"  name="descripcion" #descripcion="ngModel"  placeholder="Descripcion del porque de la consulta" style="margin-top: 2%;" [(ngModel)]="cita.descripcion" required></textarea>
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                                    <div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="descripcion.errors.required" >La descripcion es requerida!</div>
+                                </div>
+                            </div><br>
+
+                            <div class="wrap-input100 validate-input ">
+                                <p style="margin-left: 5%;">Hora establecida : </p><br>
+                                <div class="form-group form-inline">
+                                <input class="input100 form-control" style="width: 100%;" type="time" name="hora" #hora="ngModel" [(ngModel)]="cita.hora"  placeholder="Hora" required>
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                                <div *ngIf="hora.invalid && (hora.dirty || hora.touched)">
+                                    <div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="hora.errors.required" >La hora no puede quedar vacia!</div>
+                                </div>
+                            </div></div><br>
+                            <div class="wrap-input100 validate-input">
+                                <p style="margin-left: 5%;">Fecha a establecer :</p><input class="input100" type="date" name="fecha" #fecha="ngModel"   required [(ngModel)]="cita.fecha" required>
+                                <span class="focus-input100-1"></span>
+                                <span class="focus-input100-2"></span>
+                                <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
+                                    <div class="alert alert-danger" style="width: 95%; margin-left: 5%;" role="alert" *ngIf="fecha.errors.required" >El Id de la mascota es requerido!</div>
+                                </div>
+                            </div><br>
+                            <div class="container-login100-form-btn m-t-20" style="margin-bottom: 2%; margin-top: 2%;">
+                                <button class="login100-form-btn"  type="button" (click)="agregarCita()" [disabled]="agregarForm.invalid">
+                                    Agendar cita
+                                </button>
+                            </div><br>
+                        </div>
+                        
+                    </form>	
+                </div>
+            </div>
+        </div>
+</div>
+
+

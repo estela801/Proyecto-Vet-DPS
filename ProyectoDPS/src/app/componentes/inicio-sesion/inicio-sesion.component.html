@@ -3,7 +3,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" #inicarSesion >
 					<span class="login100-form-title p-b-33">
 						Inicio de Sesión
 					</span><br>
@@ -19,19 +19,31 @@
 					
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+<<<<<<< HEAD
 						<input class="input100" type="text" name="correo" #correo placeholder="Correo electronico" >
+=======
+						<input class="input100" type="text" name="correo" #correo="ngModel" [(ngModel)]="usuario.correo" placeholder="Correo electronico" >
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+<<<<<<< HEAD
 						<input class="input100" type="password" name="contrasena" #contrasena  placeholder="Contraseña"> 
+=======
+						<input class="input100" type="password" name="contra" #contra="ngModel" [(ngModel)]="usuario.contra" placeholder="Contraseña"> 
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div><br>
 
 					<div class="container-login100-form-btn m-t-20">
+<<<<<<< HEAD
 						<button class="login100-form-btn" (click)="onVerificando(correo.value, contrasena.value)" type="button">
+=======
+						<button class="login100-form-btn" (click)="entrar()" type="button">
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 							Entrar
 						</button>
 					</div><br>

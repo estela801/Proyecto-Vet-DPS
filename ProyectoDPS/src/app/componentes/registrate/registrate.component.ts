@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import Swal from 'sweetalert2';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
+<<<<<<< HEAD
+=======
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/modelos/usuarios/usuario';
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 @Component({
   selector: 'app-registrate',
   templateUrl: './registrate.component.html',
@@ -9,12 +14,20 @@ import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 })
 export class RegistrateComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(public usuarioService : UsuarioService) { }
+=======
+  constructor(public usuarioService : UsuarioService, private router: Router) { }
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 
   ngOnInit(): void {
   }
 
+<<<<<<< HEAD
   onVerificando(correo, contra, contraConfima){
+=======
+  /*onVerificando(correo, contra, contraConfima){
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
     if(correo == null || correo== "" || correo==" "){
         Swal.fire({
           icon: 'error',
@@ -36,6 +49,51 @@ export class RegistrateComponent implements OnInit {
     }else{
       this.usuarioService.registrate(correo, contra);
     }
+<<<<<<< HEAD
   }
   
+=======
+  }*/
+
+  async onRegistro(correo, contra, contraConfirma){
+    if(correo == null || correo== "" || correo==" "){
+        Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+         text: 'No ha introducido su correo electronico'
+        })
+    }else if(contra == null || contra == "" || correo== " "){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'La contraseña no puede quedar vacia!'
+      })
+    }else if(contra != contraConfirma){
+      Swal.fire({
+        icon: 'warning',
+        title: 'Error',
+        text: 'La confimación de la contraseña ha sido fallida, por favor vuelve a intentarlo'
+      })
+    }else{
+      try{
+        const usuario = await this.usuarioService.registro(correo, contra);
+        if(usuario){
+          this.verificoUsuario(usuario);
+        }
+      }catch(error){
+        console.log();
+      }
+    }
+  }
+
+  verificoUsuario(usuario : Usuario){
+    if (usuario && usuario.emailVerified) {
+      this.router.navigate(['pantalla-principal']);
+    } else if (usuario) {
+      this.router.navigate(['verificacion-correo']);
+    } else {
+      this.router.navigate(['registrate']);
+    }
+  }
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 }

@@ -1,10 +1,21 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
+<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
 import { UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
 import Swal from 'sweetalert2';
 import { Router} from '@angular/router';
+=======
+//Se debe importar la clase
+import { Usuario } from '../../modelos/usuarios/usuario';
+import { UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
+import Swal from 'sweetalert2';
+import { Router} from '@angular/router';
+//Para el arreglo
+ import { Observable } from 'rxjs';
+
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 
 @Component({
   selector: 'app-pantalla-principal',
@@ -12,15 +23,25 @@ import { Router} from '@angular/router';
   styleUrls: ['./pantalla-principal.component.css']
 })
 export class PantallaPrincipalComponent implements OnInit {
+<<<<<<< HEAD
 
   usuarios = null;
   constructor(
     public usuarioService: UsuarioService,
     private usuariosphp: UsuarioPHPService,
+=======
+  //Como areglo con los datos del usuario, esto esta en el service, se tiene que importar la lib de observable
+  public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
+  usu : any;
+  constructor(
+    public usuarioService: UsuarioService,
+    public usuariosphp: UsuarioPHPService,
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
     public router: Router,
     public ngZone: NgZone
     ) { }
 
+<<<<<<< HEAD
     usu = {
       nombre: null,
       correo: this.usuarioService.usuarioDatos.email,
@@ -28,13 +49,33 @@ export class PantallaPrincipalComponent implements OnInit {
       telefono: null,
       tipo: 1
     }
+=======
+  usuarioPHP : Usuariosphp = new Usuariosphp;
+
+  mascotaRegistrada : boolean;
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 
   ngOnInit(){
     this.onRegistradoPHP();
   }
 
+<<<<<<< HEAD
   onRegistradoPHP(){
     this.usuariosphp.verUsuarioCli(this.usuarioService.usuarioDatos.email).subscribe(datos => {
+=======
+  //Obtener los datos del usuario
+  onObtener(correo : string){
+    this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
+    this.tenerMascota(correo);
+  }
+
+  //Si no esta registrado en MySQL
+  onRegistradoPHP(){
+    //el arrglo con los datos del usuario le hacemos subscribe para que con sus datos podamos llenar las funciones 
+    this.usuarioDatos$.subscribe(info =>{
+      //En este caso en la variable info van los datos, asi que info.email es el email del usuario
+    this.usuariosphp.verUsuarioCli(info.email).subscribe(datos => {
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
       if(datos['resultado'] == 'OK' && datos['mensaje']== '0'){
         Swal.fire({
           title: 'Configuracion inicial',
@@ -51,6 +92,7 @@ export class PantallaPrincipalComponent implements OnInit {
               this.router.navigate(['configuracion-usuario']);
             });
           }else{
+<<<<<<< HEAD
             this.usuarioService.cerrarSesion();
           }
         })
@@ -62,6 +104,13 @@ export class PantallaPrincipalComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
+=======
+            this.usuarioService.logout();
+          }
+        })
+      }else if(datos['resultado'] == 'OK' && datos['mensaje'] == '1'){
+          this.onObtener(info.email);
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
       }else{
         Swal.fire({
           icon: 'error',
@@ -74,5 +123,63 @@ export class PantallaPrincipalComponent implements OnInit {
         )
       }
     })
+<<<<<<< HEAD
+=======
+    })
+  }
+
+
+  tenerMascota(correo:string){
+    this.usuariosphp.tenerMascota(correo).subscribe( datos => {
+      if(datos["resultado"] == "NO" && datos["mascota"]==0){
+        this.mascotaRegistrada = false;
+      }else {
+        this.mascotaRegistrada = true;
+      }
+    })
+  }
+
+  //Si no hay mascota registrada al iniciar 
+  enlaceMascotas(){
+    this.usuarioDatos$.subscribe(info => {
+      Swal.fire({
+        title: 'Ingresa el codgo tu mascota!, Recuerda este codigo fue dado por tu veterinario.',
+        input: 'number',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Ingresar',
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        this.usuariosphp.enlaceMascota(info.email, result.value ).subscribe(datos => {
+          if(datos["resultado"] == "NO" && datos["msg"] == 0){
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Revisa el código proporcionado por tu veterrinario",
+              timer: 3000
+            })
+          }else if(datos["resultado"] == "Error" && datos["msg"] == "NO"){
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Intenta más tarde",
+              timer: 3000
+            })  
+          }else if(datos["resultado"] == "OK" && datos["msg"]== "datos grabados"){
+            Swal.fire({
+              icon: "success",
+              title: "Exito",
+              text: "Datos guardados con exito!",
+              timer: 3000
+            }).then(() => {
+              this.tenerMascota(info.email);
+            })  
+          }
+        })
+      })
+    })
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
   }
 }

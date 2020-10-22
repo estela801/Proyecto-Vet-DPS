@@ -1,2 +1,43 @@
+<<<<<<< HEAD
 <p *ngIf="usuarioService.usuarioDatos as usuario">email {{usuario.email}}</p>
+=======
+<div class="aside" style=" float: left;">
+    <app-menu></app-menu>
+</div>
+ <div style=" float: left; margin-left: 38%">
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-33" *ngIf="usuarioPHP.tipo == 1" style="color: #AC4F1F;">
+                            Bienvenido {{usuarioPHP.nombre}}
+                        </span>
+                        <span class="login100-form-title p-b-33" *ngIf="usuarioPHP.tipo == 2" style="color: #AC4F1F;">
+                            Bienvenido veterinario :  {{usuarioPHP.nombre}}
+                        </span>
+                        <br>
+                        <div class="or-container">
+                            <div class="line-separator"></div>
+                            <div class="or-label">Citas para el día de ahora</div>
+                            <div class="line-separator"></div>
+                        </div>
+                        <div [hidden]="mascotaRegistrada == true" *ngIf="usuarioPHP.tipo == 1">
+                        <div class="text-center p-t-45 p-b-4 mt-5">
+                            <span class="txt1" style="color: black;">
+                                No tienes mascotas registradas! Haz el registro de ellas.<br>
+                            </span>
+                        </div>
+                        <div class="container-login100-form-btn m-t-20">
+                            <span  class="login100-form-btn" style="width: 50%; margin-left: 28%; margin-top: 5%;" (click)="enlaceMascotas()">
+                                Registrar mascotas!
+                            </span>
+                        </div>
+                        </div>
+                    </form>	
+                </div>
+            </div>
+        </div>
+</div>
+
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 
