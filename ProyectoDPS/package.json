@@ -30,20 +30,14 @@
     "jquery": "^3.5.1",
     "node-sass": "^4.14.1",
     "rxjs": "~6.5.4",
-<<<<<<< HEAD
-=======
     "source-map-loader": "^1.1.1",
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
     "sweetalert2": "^10.3.7",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-<<<<<<< HEAD
+    
     "@angular-devkit/build-angular": "^0.900.7",
-=======
-    "@angular-devkit/build-angular": "^0.1001.6",
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
     "@angular/cli": "~9.0.0",
     "@angular/compiler-cli": "~9.0.0",
     "@angular/language-service": "~9.0.0",

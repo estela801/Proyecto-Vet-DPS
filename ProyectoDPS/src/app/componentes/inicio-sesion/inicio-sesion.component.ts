@@ -3,10 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import  Swal  from 'sweetalert2';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-=======
 import {Usuario } from '../../modelos/usuarios/usuario';
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 @Component({
   selector: 'app-inicio-sesion',
   templateUrl: './inicio-sesion.component.html',
@@ -23,28 +20,6 @@ export class InicioSesionComponent implements OnInit {
     
   } /*
 
-<<<<<<< HEAD
-  constructor(public usuarioService : UsuarioService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
-
-  onVerificando(correo, contra){
-    if(correo == null || correo== "" || correo==" "){
-        Swal.fire({
-          icon: 'error',
-          title: 'Error!',
-          text: 'Usuario no puede estar vacio!'
-        })
-    }else if(contra == null || contra == "" || correo== " "){
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Contraseña no puede estar vacia!'
-      })
-    }else{
-      this.usuarioService.inicioSesion(correo, contra);
-=======
   onVerificando(){
     
     if(this.usuario.correo == null || this.usuario.correo == "" || this.usuario.correo ==" "){
@@ -90,7 +65,6 @@ export class InicioSesionComponent implements OnInit {
         title : "Error",
         text: "El correo : "+usuario.email+" no esta registrado, por favor registrate!",
       })
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
     }
   }
 }

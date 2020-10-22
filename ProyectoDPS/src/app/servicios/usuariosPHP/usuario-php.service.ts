@@ -17,8 +17,6 @@ export class UsuarioPHPService {
   insertarPHP(usuarios){
     return this.http.post(`${this.url}insertarUsuario.php`, JSON.stringify(usuarios));
   }
-<<<<<<< HEAD
-=======
 
   obtenerIniciado(correo : string){
     return this.http.get(`${this.url}obtener.php?correo=${correo}`);
@@ -31,5 +29,4 @@ export class UsuarioPHPService {
   enlaceMascota(usuario : string, mascota: string){
     return this.http.get(`${this.url}enlaceMascota.php?mascota=${mascota}&usuario=${usuario}`);
   }
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 }

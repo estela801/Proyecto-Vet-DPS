@@ -1,12 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
-<<<<<<< HEAD
-import { HttpClient } from '@angular/common/http';
-import { UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
-import Swal from 'sweetalert2';
-import { Router} from '@angular/router';
-=======
 //Se debe importar la clase
 import { Usuario } from '../../modelos/usuarios/usuario';
 import { UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
@@ -15,7 +9,6 @@ import { Router} from '@angular/router';
 //Para el arreglo
  import { Observable } from 'rxjs';
 
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 
 @Component({
   selector: 'app-pantalla-principal',
@@ -23,46 +16,24 @@ import { Router} from '@angular/router';
   styleUrls: ['./pantalla-principal.component.css']
 })
 export class PantallaPrincipalComponent implements OnInit {
-<<<<<<< HEAD
-
-  usuarios = null;
-  constructor(
-    public usuarioService: UsuarioService,
-    private usuariosphp: UsuarioPHPService,
-=======
   //Como areglo con los datos del usuario, esto esta en el service, se tiene que importar la lib de observable
   public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
   usu : any;
   constructor(
     public usuarioService: UsuarioService,
     public usuariosphp: UsuarioPHPService,
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
     public router: Router,
     public ngZone: NgZone
     ) { }
 
-<<<<<<< HEAD
-    usu = {
-      nombre: null,
-      correo: this.usuarioService.usuarioDatos.email,
-      fechaNac: null,
-      telefono: null,
-      tipo: 1
-    }
-=======
   usuarioPHP : Usuariosphp = new Usuariosphp;
 
   mascotaRegistrada : boolean;
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 
   ngOnInit(){
     this.onRegistradoPHP();
   }
 
-<<<<<<< HEAD
-  onRegistradoPHP(){
-    this.usuariosphp.verUsuarioCli(this.usuarioService.usuarioDatos.email).subscribe(datos => {
-=======
   //Obtener los datos del usuario
   onObtener(correo : string){
     this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
@@ -75,7 +46,6 @@ export class PantallaPrincipalComponent implements OnInit {
     this.usuarioDatos$.subscribe(info =>{
       //En este caso en la variable info van los datos, asi que info.email es el email del usuario
     this.usuariosphp.verUsuarioCli(info.email).subscribe(datos => {
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
       if(datos['resultado'] == 'OK' && datos['mensaje']== '0'){
         Swal.fire({
           title: 'Configuracion inicial',
@@ -92,25 +62,11 @@ export class PantallaPrincipalComponent implements OnInit {
               this.router.navigate(['configuracion-usuario']);
             });
           }else{
-<<<<<<< HEAD
-            this.usuarioService.cerrarSesion();
-          }
-        })
-      }else if(datos['resultado'] == 'OK' && datos['mensaje'] == '1'){
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Si estas registrado!',
-          showConfirmButton: false,
-          timer: 1500
-        })
-=======
             this.usuarioService.logout();
           }
         })
       }else if(datos['resultado'] == 'OK' && datos['mensaje'] == '1'){
           this.onObtener(info.email);
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
       }else{
         Swal.fire({
           icon: 'error',
@@ -123,8 +79,6 @@ export class PantallaPrincipalComponent implements OnInit {
         )
       }
     })
-<<<<<<< HEAD
-=======
     })
   }
 
@@ -180,6 +134,5 @@ export class PantallaPrincipalComponent implements OnInit {
         })
       })
     })
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
   }
 }

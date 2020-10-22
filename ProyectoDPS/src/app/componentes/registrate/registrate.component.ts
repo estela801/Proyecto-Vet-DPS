@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import Swal from 'sweetalert2';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
-<<<<<<< HEAD
-=======
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/modelos/usuarios/usuario';
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 @Component({
   selector: 'app-registrate',
   templateUrl: './registrate.component.html',
@@ -14,20 +11,12 @@ import { Usuario } from 'src/app/modelos/usuarios/usuario';
 })
 export class RegistrateComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor(public usuarioService : UsuarioService) { }
-=======
   constructor(public usuarioService : UsuarioService, private router: Router) { }
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
-  onVerificando(correo, contra, contraConfima){
-=======
   /*onVerificando(correo, contra, contraConfima){
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
     if(correo == null || correo== "" || correo==" "){
         Swal.fire({
           icon: 'error',
@@ -49,10 +38,6 @@ export class RegistrateComponent implements OnInit {
     }else{
       this.usuarioService.registrate(correo, contra);
     }
-<<<<<<< HEAD
-  }
-  
-=======
   }*/
 
   async onRegistro(correo, contra, contraConfirma){
@@ -95,5 +80,4 @@ export class RegistrateComponent implements OnInit {
       this.router.navigate(['registrate']);
     }
   }
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 }
