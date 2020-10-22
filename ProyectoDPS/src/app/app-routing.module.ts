@@ -8,6 +8,7 @@ import { PantallaPrincipalComponent } from './componentes/pantalla-principal/pan
 import { ConfiguracionUsuarioComponent } from './componentes/configuracion-usuario/configuracion-usuario.component';
 import { CitasComponent } from './componentes/citas/citas.component'
 import { VeterinarioComponent } from './componentes/veterinario/veterinario.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-mascota.component';
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path:'configuracion-usuario', component: ConfiguracionUsuarioComponent},
   {path:'citas-creacion', component: CitasComponent},
   {path:'veterinario', component:VeterinarioComponent},
-  {path:'enlace-mascota', component: EnlaceMascotaComponent}
+  {path:'enlace-mascota', component: EnlaceMascotaComponent},
+  {path:'registro', component:RegistroComponent}
 ];
 
 @NgModule({
