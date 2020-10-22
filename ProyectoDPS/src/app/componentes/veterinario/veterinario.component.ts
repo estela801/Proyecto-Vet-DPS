@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../modelos/usuarios/usuario';
 import { Observable }from 'rxjs';
-import { UsuarioService } from '../../servicios/usuarios/usuario.service';
+import { UsuariovetService } from '../../servicios/usuariovet/usuariovet.service';
 import {UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
-import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
+import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+
 @Component({
-  selector: 'app-configuracion-usuario',
-  templateUrl: './configuracion-usuario.component.html',
-  styleUrls: ['./configuracion-usuario.component.css']
+  selector: 'app-veterinario',
+  templateUrl: './veterinario.component.html',
+  styleUrls: ['./veterinario.component.css']
 })
-export class ConfiguracionUsuarioComponent implements OnInit {
+export class VeterinarioComponent implements OnInit {
 
   ahora = new Date();
   mes = this.ahora.getMonth();
@@ -21,7 +24,7 @@ export class ConfiguracionUsuarioComponent implements OnInit {
   diaNac : number = null;
   anioNac : number = null;*/ 
 
-  public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
+ 
   usuario  : Usuario = new Usuario();
 
   usuariosphp = null;
@@ -30,27 +33,28 @@ export class ConfiguracionUsuarioComponent implements OnInit {
       nombre:null,
       fechaNac: this.formattedDate,
       telefono: null,
-      tipo : 1
+      tipo : 2
       }
     
 
- 
+  
   constructor(
-    public usuarioService : UsuarioService,
+    public usuarioService : UsuariovetService,
     public usuariosPHPService : UsuarioPHPService,
-    public router : Router
+    public router : Router,
+    
     ) { }
-
+ 
    
   ngOnInit(): void {
     //this.usuarioDatos$.subscribe(datos => this.usuario = datos[0]);
   }
 
 
-  configPHP(){
-    this.usuarioDatos$.subscribe(info => {
-      this.usu.correo = info.email;
-      if(this.usu.nombre == null || this.usu.fechaNac == null || this.usu.telefono == null){
+  configPHP(form : NgForm){
+    
+     
+      if( this.usu.correo == null ||this.usu.nombre == null || this.usu.fechaNac == null || this.usu.telefono == null){
         Swal.fire({
           icon: 'error',
           title: 'Error!',
@@ -62,11 +66,12 @@ export class ConfiguracionUsuarioComponent implements OnInit {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Configuracion realizada con exito!',
+            title: 'Veterinario agregado con éxito!',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
-            this.router.navigate(['pantalla-principal']);
+          form.resetForm();
+            this.router.navigate(['veterinario']);
           })
         } if(datos['resultado'] == "NO"){
             Swal.fire({
@@ -76,8 +81,10 @@ export class ConfiguracionUsuarioComponent implements OnInit {
             })
           }
         })
-      }
-    });  
+      } 
+     
   }
+  
 
+ 
 }

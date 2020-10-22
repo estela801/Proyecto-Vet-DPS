@@ -1,1 +1,6 @@
 [1013/220520.275:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1020/225032.427:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1020/225103.404:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\HP PC\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\d7d6b8f9-18cb-4c00-b4d9-043f21783e34: El sistema no puede encontrar la ruta especificada. (0x3)
+[1021/095543.045:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\HP PC\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\5eab9c4c-db45-4f5a-a871-e22a4037c8ef: El sistema no puede encontrar la ruta especificada. (0x3)
+[1021/095735.150:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1021/112037.793:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
