@@ -14,6 +14,7 @@ export class RegistrateComponent implements OnInit {
   constructor(public usuarioService : UsuarioService, private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   /*onVerificando(correo, contra, contraConfima){

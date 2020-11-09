@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
+<<<<<<< HEAD
+-- Tiempo de generación: 14-10-2020 a las 10:27:07
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.3.21
+=======
 -- Tiempo de generación: 18-10-2020 a las 04:59:11
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.33
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -22,7 +28,10 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `vetdps` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `vetdps`;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 -- --------------------------------------------------------
 
 --
@@ -53,6 +62,8 @@ CREATE TABLE `tb_cuadroclinico` (
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
 -- Estructura de tabla para la tabla `tb_enlace`
 --
 
@@ -65,6 +76,7 @@ CREATE TABLE `tb_enlace` (
 -- --------------------------------------------------------
 
 --
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 -- Estructura de tabla para la tabla `tb_factura`
 --
 
@@ -143,6 +155,8 @@ ALTER TABLE `tb_cuadroclinico`
   ADD KEY `cuadroClinico_receta` (`id_receta`);
 
 --
+<<<<<<< HEAD
+=======
 -- Indices de la tabla `tb_enlace`
 --
 ALTER TABLE `tb_enlace`
@@ -151,6 +165,7 @@ ALTER TABLE `tb_enlace`
   ADD KEY `correo_usuario` (`correo_usuario`);
 
 --
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 -- Indices de la tabla `tb_factura`
 --
 ALTER TABLE `tb_factura`
@@ -194,12 +209,15 @@ ALTER TABLE `tb_cuadroclinico`
   MODIFY `id_diagnostico` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+<<<<<<< HEAD
+=======
 -- AUTO_INCREMENT de la tabla `tb_enlace`
 --
 ALTER TABLE `tb_enlace`
   MODIFY `Id_enlace` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 -- AUTO_INCREMENT de la tabla `tb_factura`
 --
 ALTER TABLE `tb_factura`
@@ -236,6 +254,8 @@ ALTER TABLE `tb_cuadroclinico`
   ADD CONSTRAINT `tb_cuadroclinico_ibfk_2` FOREIGN KEY (`id_receta`) REFERENCES `tb_receta` (`id_receta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+<<<<<<< HEAD
+=======
 -- Filtros para la tabla `tb_enlace`
 --
 ALTER TABLE `tb_enlace`
@@ -243,11 +263,21 @@ ALTER TABLE `tb_enlace`
   ADD CONSTRAINT `tb_enlace_ibfk_2` FOREIGN KEY (`correo_usuario`) REFERENCES `tb_usuario` (`correo_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 -- Filtros para la tabla `tb_factura`
 --
 ALTER TABLE `tb_factura`
   ADD CONSTRAINT `tb_factura_ibfk_1` FOREIGN KEY (`id_cita`) REFERENCES `tb_citas` (`id_citas`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_factura_ibfk_2` FOREIGN KEY (`id_receta`) REFERENCES `tb_receta` (`id_receta`) ON DELETE CASCADE ON UPDATE CASCADE;
+<<<<<<< HEAD
+
+--
+-- Filtros para la tabla `tb_mascotas`
+--
+ALTER TABLE `tb_mascotas`
+  ADD CONSTRAINT `tb_mascotas_ibfk_1` FOREIGN KEY (`correo_encargado`) REFERENCES `tb_usuario` (`correo_usuario`) ON UPDATE CASCADE;
+=======
+>>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

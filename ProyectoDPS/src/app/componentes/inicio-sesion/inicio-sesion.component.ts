@@ -49,7 +49,7 @@ export class InicioSesionComponent implements OnInit {
       console.log(error)
     }
   }
-
+ 
   private usuarioVerificado(usuario : Usuario){
     if(usuario && usuario.emailVerified){
       this.router.navigate(['pantalla-principal'])

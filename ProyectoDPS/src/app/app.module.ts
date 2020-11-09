@@ -6,7 +6,13 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './componentes/index/index.component';
 import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
 import { RegistrateComponent } from './componentes/registrate/registrate.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 import { VerificacionCorreoComponent } from './componentes/verificacion-correo/verificacion-correo.component';
+import { ReactiveFormsModule} from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 //Servicios
 import { UsuarioService } from './servicios/usuarios/usuario.service';
 
@@ -27,6 +33,7 @@ import { CitasComponent } from './componentes/citas/citas.component';
 import { VeterinarioComponent } from './componentes/veterinario/veterinario.component';
 
 import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +46,8 @@ import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
     MenuComponent,
     EnlaceMascotaComponent,
     CitasComponent,
-    VeterinarioComponent
+    VeterinarioComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,13 @@ import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatListModule,
+    MatStepperModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     UsuarioService,

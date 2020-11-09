@@ -7,16 +7,19 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod  && firebase deploy"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.0",
+    "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.0.0",
     "@angular/compiler": "~9.0.0",
     "@angular/core": "~9.0.0",
     "@angular/fire": "^6.0.3",
     "@angular/forms": "~9.0.0",
+    "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
@@ -26,6 +29,7 @@
     "bootstrap": "^4.5.2",
     "firebase": "^7.23.0",
     "jquery": "^3.5.1",
+    "node-sass": "^4.14.1",
     "rxjs": "~6.5.4",
     "source-map-loader": "^1.1.1",
     "sweetalert2": "^10.3.7",
@@ -33,7 +37,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1001.6",
+    "@angular-devkit/build-angular": "^0.900.7",
     "@angular/cli": "~9.0.0",
     "@angular/compiler-cli": "~9.0.0",
     "@angular/language-service": "~9.0.0",
