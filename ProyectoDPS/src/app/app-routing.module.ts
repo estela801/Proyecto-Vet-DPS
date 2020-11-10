@@ -10,6 +10,7 @@ import { CitasComponent } from './componentes/citas/citas.component'
 import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-mascota.component';
 import { VeterinarioComponent } from './componentes/veterinario/veterinario.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-total-citas.component'; 
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'citas-creacion', component: CitasComponent},
   {path:'veterinario', component:VeterinarioComponent},
   {path:'enlace-mascota', component: EnlaceMascotaComponent},
-  {path:'registro', component:RegistroComponent}
+  {path:'registro', component:RegistroComponent},
+  {path:'ver-citas', component:VerTotalCitasComponent}
 ];
 
 @NgModule({

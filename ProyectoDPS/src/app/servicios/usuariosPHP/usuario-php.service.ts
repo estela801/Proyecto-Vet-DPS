@@ -8,6 +8,8 @@ import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp'
 export class UsuarioPHPService {
 
   url = 'https://vet-dps.000webhostapp.com/Recursos/';
+  //url = "https://localhost/vetDPS/";
+
   constructor(private http: HttpClient) { }
   
   verUsuarioCli(correo : string){
@@ -28,5 +30,9 @@ export class UsuarioPHPService {
 
   enlaceMascota(usuario : string, mascota: string){
     return this.http.get(`${this.url}enlaceMascota.php?mascota=${mascota}&usuario=${usuario}`);
+  }
+
+  obtenerCitasVet(usuario : string){
+    return this.http.get(`${this.url}verCitas.php?correo=${usuario}`);
   }
 }

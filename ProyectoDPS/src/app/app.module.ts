@@ -13,6 +13,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
+import { NgxPaginationModule } from 'ngx-pagination';
 //Servicios
 import { UsuarioService } from './servicios/usuarios/usuario.service';
 
@@ -34,6 +35,7 @@ import { VeterinarioComponent } from './componentes/veterinario/veterinario.comp
 
 import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-total-citas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EnlaceMascotaComponent,
     CitasComponent,
     VeterinarioComponent,
-    RegistroComponent
+    RegistroComponent,
+    VerTotalCitasComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     MatStepperModule,
     BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [
     UsuarioService,
