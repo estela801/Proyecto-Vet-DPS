@@ -4,6 +4,7 @@ import { Usuariosphp } from '../../modelos/usuariosPHP/usuariosphp';
 //Se debe importar la clase
 import { Usuario } from '../../modelos/usuarios/usuario';
 import { UsuarioPHPService } from '../../servicios/usuariosPHP/usuario-php.service';
+import { CitaService } from '../../servicios/citas/cita.service'
 import Swal from 'sweetalert2';
 import { Router} from '@angular/router';
 //Para el arreglo
@@ -23,12 +24,13 @@ export class PantallaPrincipalComponent implements OnInit {
     public usuarioService: UsuarioService,
     public usuariosphp: UsuarioPHPService,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    public citaService : CitaService
     ) { }
 
   usuarioPHP : Usuariosphp = new Usuariosphp;
-
   mascotaRegistrada : boolean;
+  consultas = null;
 
   ngOnInit(){
     this.onRegistradoPHP();
@@ -38,6 +40,11 @@ export class PantallaPrincipalComponent implements OnInit {
   onObtener(correo : string){
     this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
     this.tenerMascota(correo);
+    this.consultasVet(correo);
+  }
+
+  consultasVet(usuario : string){
+    this.citaService.obtenerCitasVet(usuario).subscribe(datos  => this.consultas = datos);
   }
 
   //Si no esta registrado en MySQL

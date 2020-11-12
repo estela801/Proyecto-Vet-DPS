@@ -6,6 +6,7 @@ import { Citas } from '../../../modelos/citas';
 import { Usuario } from '../../../modelos/usuarios/usuario';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-ver-total-citas',
   templateUrl: './ver-total-citas.component.html',
@@ -15,6 +16,8 @@ export class VerTotalCitasComponent implements OnInit {
 
   public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
   public consultas = null;
+  totalConsultas : number;
+  page : number = 1;
 
   constructor(
     public usuarioService : UsuarioService,
@@ -27,7 +30,11 @@ export class VerTotalCitasComponent implements OnInit {
 
   obtenerConsultas(){
     this.usuarioDatos$.subscribe(info => {
-      this.usuarioPHP.obtenerCitasVet(info.email).subscribe(datos => this.consultas = datos);
+      this.usuarioPHP.obtenerCitasVet(info.email).subscribe(datos => {
+        this.consultas = datos;
+        this.totalConsultas = datos.propertyIsEnumerable.length;
+        console.log("El lenght es de "+this.totalConsultas);
+      });
     })
    
   }

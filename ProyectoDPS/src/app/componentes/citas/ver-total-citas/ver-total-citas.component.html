@@ -28,7 +28,11 @@
                                           <th scope="col">Accion</th>
                                       </tr>
                                       <tbody>
-                                        <tr *ngFor="let citas of consultas">
+                                        <tr *ngFor="let citas of consultas | paginate: { id: 'paginacion',
+                                            itemsPerPage: 10,
+                                            currentPage: page,
+                                            totalItems: totalConsultas
+                                        }">
                                             <td>{{citas.nombre}}</td>
                                             <td>{{citas.fecha}}</td>
                                             <td>{{citas.hora}}</td>
@@ -40,6 +44,9 @@
                                         </tr>
                                       </tbody>
                                     </table>
+                                    <div>
+                                        <pagination-controls id="paginacion" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+                                    </div>
                                   </div>
                             </span>
                         </div>

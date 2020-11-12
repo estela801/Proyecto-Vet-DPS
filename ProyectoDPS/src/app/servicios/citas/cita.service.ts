@@ -14,4 +14,8 @@ export class CitaService {
   insertarCita(cita){
     return this.http.post(`${this.url}insertarCita.php`, JSON.stringify(cita));
   }
+
+  obtenerCitasVet(usuario : string){
+    return this.http.get(`${this.url}verCitasVet.php?correo=${usuario}`);
+  }
 }

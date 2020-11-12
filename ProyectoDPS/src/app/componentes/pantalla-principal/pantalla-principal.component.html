@@ -1,7 +1,7 @@
 <div class="aside" style=" float: left;">
     <app-menu></app-menu>
 </div>
- <div style=" float: left; margin-left: 38%">
+ <div style=" float: left; margin-left: 15%">
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
@@ -15,7 +15,7 @@
                         <br>
                         <div class="or-container">
                             <div class="line-separator"></div>
-                            <div class="or-label">Citas para el día de ahora</div>
+                            <div class="or-label">Citas proximas</div>
                             <div class="line-separator"></div>
                         </div>
                         <div [hidden]="mascotaRegistrada == true" *ngIf="usuarioPHP.tipo == 1">
@@ -29,6 +29,31 @@
                                 Registrar mascotas!
                             </span>
                         </div>
+                        </div>
+                        <div *ngIf="usuarioPHP.tipo == 2" >
+                            <div class="table-responsive ">
+                                <table class="table">
+                                  <caption>Citas proximas</caption>
+                                  <tr>
+                                      <th scope="col">Mascota</th>
+                                      <th scope="col">Fecha</th>
+                                      <th scope="col">Hora</th>
+                                      <th scope="col">Accion</th>
+                                  </tr>
+                                  <tbody>
+                                    <tr *ngFor="let citas of consultas">
+                                        <td>{{citas.nombre}}</td>
+                                        <td>{{citas.fecha}}</td>
+                                        <td>{{citas.hora}}</td>
+                                        <td><p>
+                                            <a class="btn btn-primary" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white">
+                                                Ver mas
+                                            </a>
+                                        </p></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
                         </div>
                     </form>	
                 </div>
