@@ -18,4 +18,12 @@ export class CitaService {
   obtenerCitasVet(usuario : string){
     return this.http.get(`${this.url}verCitasVet.php?correo=${usuario}`);
   }
+
+  obtenerCitasCliente(usuario : String){
+    return this.http.get(`${this.url}verCitasCliente.php?correo=${usuario}`);
+  }
+
+  obtenerInfoCitas(id: string){
+    return this.http.get(`${this.url}obtenerInfoCitas.php?cita=${id}`);
+  }
 }

@@ -1,11 +1,12 @@
-<div class="aside" style=" float: left;">
+
+<div class="aside">
     <app-menu></app-menu>
 </div>
- <div style=" float: left; margin-left: 15%">
-        <div class="limiter">
+ <div style=" float: left; margin-left: 28%;" >
+        <div class="limiter"  style="width: 100%; ">
             <div class="container-login100">
                 <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
-                    <form class="login100-form validate-form">
+                    <form class="login100-form validate-form" style="width:100%;">
                         <span class="login100-form-title p-b-33" *ngIf="usuarioPHP.tipo == 1" style="color: #AC4F1F;">
                             Bienvenido {{usuarioPHP.nombre}}
                         </span>
@@ -31,7 +32,7 @@
                         </div>
                         </div>
                         <div *ngIf="usuarioPHP.tipo == 2" >
-                            <div class="table-responsive ">
+                            <div class="table-responsive " style="width: 100%;">
                                 <table class="table">
                                   <caption>Citas proximas</caption>
                                   <tr>
@@ -55,10 +56,41 @@
                                 </table>
                               </div>
                         </div>
+                        <div *ngIf="usuarioPHP.tipo == 1"  [hidden]="mascotaRegistrada == false" >
+                            <div class="table-responsive " style="width: 100%;">
+                                <table class="table">
+                                  <caption>Citas proximas</caption>
+                                  <tr>
+                                      <th scope="col">Mascota</th>
+                                      <th scope="col">Veterinario</th>
+                                      
+                                      <th scope="col">Fecha</th>
+                                      <th scope="col">Hora</th>
+                                      <th scope="col">Acciones</th>
+                                      
+                                  </tr>
+                                  <tbody>
+                                    <tr *ngFor="let citas of consultas2">
+                                        <td>{{citas.nombre}}</td>
+                                        <td>{{citas.vet}}</td>
+                                        
+                                        <td>{{citas.fecha}}</td>
+                                        <td>{{citas.hora}}</td>
+                                        <td><p>
+                                            <a class="btn btn-primary" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white" (click)="verMasCitas(citas.id_citas)" >
+                                                Ver mas
+                                            </a>
+                                        </p></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                        </div>
                     </form>	
                 </div>
             </div>
         </div>
 </div>
+
 
 

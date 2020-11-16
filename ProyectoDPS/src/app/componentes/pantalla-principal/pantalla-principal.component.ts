@@ -31,6 +31,8 @@ export class PantallaPrincipalComponent implements OnInit {
   usuarioPHP : Usuariosphp = new Usuariosphp;
   mascotaRegistrada : boolean;
   consultas = null;
+  consultas2 = null;
+  consul =null ;
 
   ngOnInit(){
     this.onRegistradoPHP();
@@ -40,11 +42,34 @@ export class PantallaPrincipalComponent implements OnInit {
   onObtener(correo : string){
     this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
     this.tenerMascota(correo);
-    this.consultasVet(correo);
+    if(this.usuarioPHP.tipo == 2){
+      this.consultasVet(correo);
+    }else{
+      this.consultasCliente(correo);
+    }
+    
   }
 
   consultasVet(usuario : string){
     this.citaService.obtenerCitasVet(usuario).subscribe(datos  => this.consultas = datos);
+  }
+
+  consultasCliente(usuario:string){
+    this.citaService.obtenerCitasCliente(usuario).subscribe(datos => this.consultas2 = datos);
+  }
+
+  verMasCitas(id:string){
+
+    this.citaService.obtenerInfoCitas(id).subscribe(datos =>{
+      this.consul = datos[0]
+      
+      Swal.fire({
+        title: 'Cita para fecha '+ this.consul.fecha ,
+        text: '<b>Something went wrong!</b>',
+        footer: '<a href>Why do I have this issue?</a>',
+        scrollbarPadding: false
+      })
+    });
   }
 
   //Si no esta registrado en MySQL
