@@ -27,7 +27,7 @@ export class VerTotalCitasComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerConsultas();
   }
-
+ 
   obtenerConsultas(){
     this.usuarioDatos$.subscribe(info => {
       this.usuarioPHP.obtenerCitasVet(info.email).subscribe(datos => {

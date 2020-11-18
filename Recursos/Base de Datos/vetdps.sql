@@ -62,8 +62,7 @@ CREATE TABLE `tb_cuadroclinico` (
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
-=======
+
 -- Estructura de tabla para la tabla `tb_enlace`
 --
 
@@ -76,7 +75,7 @@ CREATE TABLE `tb_enlace` (
 -- --------------------------------------------------------
 
 --
->>>>>>> 1bd4308e86df555a3018dd6660edde5d8359fbbe
+
 -- Estructura de tabla para la tabla `tb_factura`
 --
 

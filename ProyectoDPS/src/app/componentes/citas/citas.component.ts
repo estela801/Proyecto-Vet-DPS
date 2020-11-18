@@ -33,18 +33,21 @@ export class CitasComponent implements OnInit {
        this.citaService.insertarCita(this.cita).subscribe((datos) => {
       if(datos["msg"]=="1"){
         Swal.fire({
+         
           icon: 'warning',
           title: 'Tiempo no disponible',
           text: 'Al rededor de las '+this.cita.hora+" tienes otra cita programada!"
         })
       }else if(datos["msg"] == "2"){
         Swal.fire({
+         
           icon: 'warning',
           title: 'Id de mascota no reconocido',
           text: 'El id # '+this.cita.id_mascota+" no ha sido reconocido, por favor verifica el id de mascota."
         })
       } else if(datos["msg"] == "OK"){
         Swal.fire({
+         
           icon: 'success',
           title: 'Exito!',
           text: 'Cita programada con exito !'

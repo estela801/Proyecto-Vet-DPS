@@ -50,8 +50,8 @@ export class PantallaPrincipalComponent implements OnInit {
     
   }
 
-  consultasVet(usuario : string){
-    this.citaService.obtenerCitasVet(usuario).subscribe(datos  => this.consultas = datos);
+  consultasVet(correo : string){
+    this.citaService.obtenerCitasVet(correo).subscribe(datos  => this.consultas = datos);
   }
 
   consultasCliente(usuario:string){
@@ -92,6 +92,7 @@ export class PantallaPrincipalComponent implements OnInit {
           if (result.isConfirmed) {
             this.ngZone.run(() => {
               this.router.navigate(['configuracion-usuario']);
+              this.onObtener(info.email);
             });
           }else{
             this.usuarioService.logout();
@@ -129,7 +130,7 @@ export class PantallaPrincipalComponent implements OnInit {
   enlaceMascotas(){
     this.usuarioDatos$.subscribe(info => {
       Swal.fire({
-        title: 'Ingresa el codgo tu mascota!, Recuerda este codigo fue dado por tu veterinario.',
+        title: 'Ingresa el codigo tu mascota!, Recuerda este codigo fue dado por tu veterinario.',
         input: 'number',
         inputAttributes: {
           autocapitalize: 'off'

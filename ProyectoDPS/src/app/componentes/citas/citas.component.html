@@ -1,11 +1,11 @@
 <div class="aside" style=" float: left;">
     <app-menu></app-menu>
 </div>
- <div style=" float: left;">
-        <div class="limiter">
-            <div class="container-login100">
-                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
-                    <form class="login100-form validate-form"  #agregarForm="ngForm" novalidate id="citas">
+<body style="background-color: #fff; float: center;">
+       <div class="limiter" style=" float: center;">
+            <div class="container-login100" style="float: center;">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 "style=" float: center;" >
+                    <form class="login100-form validate-form"  #agregarForm="ngForm" novalidate id="citas" style=" float: center;">
                         <span class="login100-form-title p-b-33" style="color: #AC4F1F;">
                            Generacion de citas
                         </span>
@@ -28,7 +28,7 @@
                             </div>
         
                             <div class="wrap-input100 rs1 validate-input" >
-                                <textarea class="input100"  name="descripcion" #descripcion="ngModel"  placeholder="Descripcion del porque de la consulta" style="margin-top: 2%;" [(ngModel)]="cita.descripcion" required></textarea>
+                                <textarea class="input100"  name="descripcion" #descripcion="ngModel"  placeholder=" Descripcion del porque de la consulta" style="margin-top: 3%; margin-left: 5%;" [(ngModel)]="cita.descripcion" required></textarea>
                                 <span class="focus-input100-1"></span>
                                 <span class="focus-input100-2"></span>
                                 <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
@@ -65,6 +65,7 @@
                 </div>
             </div>
         </div>
-</div>
+
+    </body>
 
 
