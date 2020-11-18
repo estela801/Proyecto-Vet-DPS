@@ -44,7 +44,7 @@
                 <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2" routerLink="/registro"><a>Agregar mascotas</a></li>
                 <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2"><a>Ver Pacientes</a></li>
             </ul></li>
-            <li (click)="onSubmenu3()" *ngIf="usuarioPHP.tipo == 2"><a><i class="fas fa-project-diagram"></i>Medicamentos</a><ul>
+            <li (click)="onSubmenu3()" *ngIf="usuarioPHP.tipo == 2" ><a><i class="fas fa-project-diagram"></i>Medicamentos</a><ul>
                 <li *ngIf ="submenu3 == true"><a>Agregar Medicamento</a></li>
                 <li *ngIf ="submenu3 == true"><a>Ver Inventario</a></li>
             </ul></li>

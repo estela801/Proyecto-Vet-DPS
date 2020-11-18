@@ -13,6 +13,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-total-citas.component'; 
 
 
+
 const routes: Routes = [
   {path:'', redirectTo:'/inicio',pathMatch:'full'},
   {path:'inicio', component: IndexComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path:'veterinario', component:VeterinarioComponent},
   {path:'enlace-mascota', component: EnlaceMascotaComponent},
   {path:'registro', component:RegistroComponent},
-  {path:'ver-citas', component:VerTotalCitasComponent}
+  {path:'ver-citas', component:VerTotalCitasComponent},
+ 
 ];
 
 @NgModule({
