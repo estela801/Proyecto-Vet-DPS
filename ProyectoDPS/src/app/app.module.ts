@@ -36,6 +36,8 @@ import { VeterinarioComponent } from './componentes/veterinario/veterinario.comp
 import {UsuarioPHPService } from './servicios/usuariosPHP/usuario-php.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-total-citas.component';
+import { VerTrabajadoresComponent } from './componentes/ver-trabajadores/ver-trabajadores.component';
+import { VerMascotasComponent } from './componentes/ver-mascotas/ver-mascotas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-
     CitasComponent,
     VeterinarioComponent,
     RegistroComponent,
-    VerTotalCitasComponent
+    VerTotalCitasComponent,
+    VerTrabajadoresComponent,
+    VerMascotasComponent
   ],
   imports: [
     BrowserModule,

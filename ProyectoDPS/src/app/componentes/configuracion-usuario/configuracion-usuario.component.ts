@@ -60,7 +60,7 @@ export class ConfiguracionUsuarioComponent implements OnInit {
       this.usuariosPHPService.insertarPHP(this.usu).subscribe(datos => {
         if(datos['resultado'] == 'OK'){
           Swal.fire({
-            position: 'top-end',
+ 
             icon: 'success',
             title: 'Configuracion realizada con exito!',
             showConfirmButton: false,

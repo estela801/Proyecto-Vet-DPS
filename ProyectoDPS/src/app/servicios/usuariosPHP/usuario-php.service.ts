@@ -35,4 +35,10 @@ export class UsuarioPHPService {
   obtenerCitasVet(usuario : string){
     return this.http.get(`${this.url}verCitas.php?correo=${usuario}`);
   }
+
+  obtenerTrabajadores()
+  {
+    return this.http.get(`${this.url}verTrabajadores.php`);
+  }
+
 }

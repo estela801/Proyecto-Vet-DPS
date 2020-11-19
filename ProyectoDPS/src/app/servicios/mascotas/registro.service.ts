@@ -15,5 +15,7 @@ export class RegistroService {
     return this.http.post(`${this.url}insertMascota.php`,JSON.stringify(mascota),{responseType: 'text'});
   }
 
- 
+ verMascotas(){
+   return this.http.get(`${this.url}verMascotas.php`);
+ }
 }

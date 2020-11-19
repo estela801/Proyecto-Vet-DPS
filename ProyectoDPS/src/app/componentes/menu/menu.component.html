@@ -42,20 +42,16 @@
                 <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 1" routerLink="/enlace-mascota"><a>Enlazar mis mascotas</a></li>
                 <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 1" ><a>Ver mis mascotas</a></li>
                 <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2" routerLink="/registro"><a>Agregar mascotas</a></li>
-                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2"><a>Ver Pacientes</a></li>
-            </ul></li>
-            <li (click)="onSubmenu3()" *ngIf="usuarioPHP.tipo == 2"><a><i class="fas fa-project-diagram"></i>Medicamentos</a><ul>
-                <li *ngIf ="submenu3 == true"><a>Agregar Medicamento</a></li>
-                <li *ngIf ="submenu3 == true"><a>Ver Inventario</a></li>
+                <li *ngIf ="submenu2 == true && usuarioPHP.tipo == 2" routerLink= "/ver-mascotas"><a>Ver Pacientes</a></li>
             </ul></li>
             <!--Aqui empieza le menu para agegar veterinarios-->
             <li (click)="onSubmenu4()" *ngIf="usuarioPHP.tipo == 2" ><a><i class="fas fa-address-card"></i>Trabajadores</a><ul>
                 <!--Servira para agregar veterinarios-->
                 <li *ngIf ="submenu4 == true && usuarioPHP.tipo == 2" routerLink="/veterinario" ><a>Agregar veterinarios</a></li>
                 <!--Ver todos los veterinarios-->
-                <li *ngIf ="submenu4 == true && usuarioPHP.tipo == 2"><a>Ver veterinarios</a></li>
+                <li *ngIf ="submenu4 == true && usuarioPHP.tipo == 2" routerLink="/ver-trabajadores"><a>Ver veterinarios</a></li>
             </ul></li>
-            <li (click)="cerrarSesion();"><a>Cerrarr Sesión</a></li>
+            <li (click)="cerrarSesion();"><a>Cerrar Sesión</a></li>
         </ul> 
         
     </div>

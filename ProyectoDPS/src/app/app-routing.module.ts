@@ -11,7 +11,8 @@ import { EnlaceMascotaComponent } from './componentes/enlace-mascota/enlace-masc
 import { VeterinarioComponent } from './componentes/veterinario/veterinario.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-total-citas.component'; 
-
+import { VerTrabajadoresComponent } from './componentes/ver-trabajadores/ver-trabajadores.component';
+import { VerMascotasComponent } from './componentes/ver-mascotas/ver-mascotas.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/inicio',pathMatch:'full'},
@@ -25,7 +26,9 @@ const routes: Routes = [
   {path:'veterinario', component:VeterinarioComponent},
   {path:'enlace-mascota', component: EnlaceMascotaComponent},
   {path:'registro', component:RegistroComponent},
-  {path:'ver-citas', component:VerTotalCitasComponent}
+  {path:'ver-citas', component:VerTotalCitasComponent},
+  {path:'ver-trabajadores', component:VerTrabajadoresComponent},
+  {path:'ver-mascotas', component:VerMascotasComponent}
 ];
 
 @NgModule({
