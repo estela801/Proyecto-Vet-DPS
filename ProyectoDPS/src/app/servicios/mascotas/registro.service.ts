@@ -16,10 +16,19 @@ export class RegistroService {
     return this.http.post(`${this.url}insertMascota.php`,JSON.stringify(mascota),{responseType: 'text'});
   }
 
- verMascotas(){
+ verMascotas( ){
    return this.http.get(`${this.url}verMascotas.php`);
  }
+ verMascotasm(id : string ){
+  return this.http.get(`${this.url}verMascotasm.php?id=${id}`);
+}
  verMascotasc(correo : string){
   return this.http.get(`${this.url}verMascotasC.php?correo=${correo}`);
 }
+
+
+modificarMascota(mascotas){
+  return this.http.post(`${this.url}modificarMascota.php`, JSON.stringify(mascotas));
+}
+ 
 }
