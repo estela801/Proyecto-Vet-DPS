@@ -14,6 +14,7 @@ import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-
 import { VerTrabajadoresComponent } from './componentes/ver-trabajadores/ver-trabajadores.component';
 import { VerMascotasComponent } from './componentes/ver-mascotas/ver-mascotas.component';
 
+
 const routes: Routes = [
   {path:'', redirectTo:'/inicio',pathMatch:'full'},
   {path:'inicio', component: IndexComponent},
