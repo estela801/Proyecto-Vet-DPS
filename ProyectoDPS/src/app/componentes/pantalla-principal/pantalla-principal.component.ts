@@ -154,8 +154,8 @@ export class PantallaPrincipalComponent implements OnInit {
 
   //Si no hay mascota registrada al iniciar 
   enlaceMascotas(){
-    this.usuarioDatos$.subscribe(info => {
-      Swal.fire({
+    this.usuarioDatos$.subscribe(async info => {
+      /*Swal.fire({
         title: 'Ingresa el codigo tu mascota!, Recuerda este codigo fue dado por tu veterinario.',
         input: 'number',
         inputAttributes: {
@@ -192,6 +192,21 @@ export class PantallaPrincipalComponent implements OnInit {
           }
         })
       })
+
+      const {value: registro_mascota} = await Swal.fire({
+        title:'Enlazar Mascota',
+        input: 'number',
+        inputPlaceholder: 'Ingresa código de mascota',
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return 'El codigo no es valido!'
+          }
+        } 
+      })
+      if(registro_mascota){
+        Swal.fire({})
+      }*/
     })
   }
 }

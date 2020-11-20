@@ -78,8 +78,8 @@ export class MenuComponent implements OnInit {
 
   async cerrarSesion(){
     try{
-      await this.usuarioService.logout();
        this.router.navigate(['inicio-sesion']);
+       await this.usuarioService.logout();
     }catch(error){
       console.log(error);
     }
