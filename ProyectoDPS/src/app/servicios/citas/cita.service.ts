@@ -30,4 +30,8 @@ export class CitaService {
   modificarCitas(citas){
     return this.http.post(`${this.url}modificarCita.php`, JSON.stringify(citas));
   }
+
+  eliminarCita(cita){
+    return this.http.post(`${this.url}eliminarCita.php`, JSON.stringify(cita));
+  }
 }

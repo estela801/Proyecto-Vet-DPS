@@ -28,7 +28,7 @@
                                           <th scope="col"> Accion</th>
                                       </tr>
                                       <tbody>
-                                        <tr *ngFor="let citas of consultas | paginate: { id: 'paginacion',itemsPerPage: 4, currentPage: page,totalItems: totalConsultas}">
+                                        <tr *ngFor="let citas of consultas | paginate: { id: 'paginacion',itemsPerPage:3, currentPage: page,totalItems: totalConsultas}">
                                             <td>{{citas.nombre}}</td>
                                             <td>{{citas.fecha}}</td>
                                             <td>{{citas.hora}}</td>
@@ -37,7 +37,9 @@
                                                     Ver mas 
                                                 </a></p><br>
                                                 <p><a class="btn btn-warning" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white" (click)="modificarCitas(citas.id_citas)">Modificar</a>
-                                            </p></td>
+                                                </p><br>
+                                                <p><a class="btn btn-danger" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white" (click)="eliminarCita(citas.id_citas)">Eliminar</a>
+                                                </p></td>
                                         </tr>
                                       </tbody>
                                     </table>

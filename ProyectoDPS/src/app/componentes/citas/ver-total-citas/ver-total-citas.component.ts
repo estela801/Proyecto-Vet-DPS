@@ -18,7 +18,7 @@ export class VerTotalCitasComponent implements OnInit {
 
   public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
   public consultas = null;
-  totalConsultas : number;
+  public totalConsultas : number;
   page : number = 1;
   consul= null;
   mod = null;
@@ -39,11 +39,12 @@ export class VerTotalCitasComponent implements OnInit {
     this.usuarioDatos$.subscribe(info => {
       this.usuarioPHP.obtenerCitasVet(info.email).subscribe(datos => {
         this.consultas = datos;
-        this.totalConsultas = datos.propertyIsEnumerable.length;
+        this.totalConsultas+=1;
         console.log("El lenght es de "+this.totalConsultas);
         this.citas.correo_vet = info.email;
       });
     })
+    
    
   }
 
@@ -79,7 +80,9 @@ export class VerTotalCitasComponent implements OnInit {
                 '<input type="date" id="fecha_cita" value="'+this.mod.fecha+'" class="form-control">'+
                 '<label>Hora de la cita:</label>'+
                 '<input type="time" id="hora_cita" value="'+this.mod.hora+'" class="form-control">',
-          focusConfirm: false,
+          focusConfirm: true,
+          showCloseButton: true,
+          confirmButtonText: 'Modificar cita',
           preConfirm: () => {
             return [
               //Aqui asigno los valores de los inputs con los id que les puse en el sweet alert
@@ -119,5 +122,43 @@ export class VerTotalCitasComponent implements OnInit {
          });
         }
       });
+    }
+
+    eliminarCita(id:string){
+      this.citas.id = id;
+      Swal.fire({
+        title: 'Está seguro de eliminar esta cita?',
+        html: "<h3>El cambio será irreversible!</h3>",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar cita.',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          return this.citaService.eliminarCita(this.citas).subscribe(datos => {
+            if(datos["msg"]=="OK"){
+              const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              
+              Toast.fire({
+                icon: 'success',
+                html: '<h2>Elimando Cita...</h2>'
+              }).then(() => this.obtenerConsultas());
+            }
+          });
+        }
+      })
+      
     }
 }
