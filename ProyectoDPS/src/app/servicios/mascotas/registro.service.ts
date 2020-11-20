@@ -4,6 +4,7 @@ import {Mascota} from '../../modelos/mascotas/mascota';
 import { ApiResponse } from '../../modelos/ApiResponse/api-response';
 import {Observable} from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,4 +19,7 @@ export class RegistroService {
  verMascotas(){
    return this.http.get(`${this.url}verMascotas.php`);
  }
+ verMascotasc(correo : string){
+  return this.http.get(`${this.url}verMascotasC.php?correo=${correo}`);
+}
 }

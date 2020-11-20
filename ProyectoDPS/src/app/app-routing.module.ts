@@ -13,7 +13,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-total-citas.component'; 
 import { VerTrabajadoresComponent } from './componentes/ver-trabajadores/ver-trabajadores.component';
 import { VerMascotasComponent } from './componentes/ver-mascotas/ver-mascotas.component';
-
+import { VerMisMascotasComponent } from './componentes/ver-mis-mascotas/ver-mis-mascotas.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/inicio',pathMatch:'full'},
@@ -29,7 +29,8 @@ const routes: Routes = [
   {path:'registro', component:RegistroComponent},
   {path:'ver-citas', component:VerTotalCitasComponent},
   {path:'ver-trabajadores', component:VerTrabajadoresComponent},
-  {path:'ver-mascotas', component:VerMascotasComponent}
+  {path:'ver-mascotas', component:VerMascotasComponent},
+  {path:'ver-mis-mascotas', component:VerMisMascotasComponent}
 ];
 
 @NgModule({

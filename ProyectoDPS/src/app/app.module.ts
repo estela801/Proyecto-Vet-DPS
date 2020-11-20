@@ -38,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VerTotalCitasComponent } from './componentes/citas/ver-total-citas/ver-total-citas.component';
 import { VerTrabajadoresComponent } from './componentes/ver-trabajadores/ver-trabajadores.component';
 import { VerMascotasComponent } from './componentes/ver-mascotas/ver-mascotas.component';
+import { VerMisMascotasComponent } from './componentes/ver-mis-mascotas/ver-mis-mascotas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { VerMascotasComponent } from './componentes/ver-mascotas/ver-mascotas.co
     RegistroComponent,
     VerTotalCitasComponent,
     VerTrabajadoresComponent,
-    VerMascotasComponent
+    VerMascotasComponent,
+    VerMisMascotasComponent
   ],
   imports: [
     BrowserModule,

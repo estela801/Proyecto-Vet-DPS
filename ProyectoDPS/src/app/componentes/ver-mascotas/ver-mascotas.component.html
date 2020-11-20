@@ -23,6 +23,7 @@
                                           <th scope="col"><strong>Tamaño</strong></th>
                                           <th scope="col"><strong>Raza</strong></th>
                                           <th scope="col"><strong>Sexo</strong></th>
+                                        
                                       </tr>
                                       <tbody>
                                         <tr *ngFor="let masco of consultas | paginate: { id: 'paginacion',
@@ -34,9 +35,10 @@
                                             <td>{{masco.nombre}}</td>
                                             <td>{{masco.edad}}</td>
                                             <td>{{masco.tipo}}</td>
-                                            <td>{{masco.Raza}}</td>
+                                            <td>{{masco.raza}}</td>
                                             <td>{{masco.sexo}}</td>
                                         </tr>
+                                        
                                       </tbody>
                                     </table>
                                     <div>

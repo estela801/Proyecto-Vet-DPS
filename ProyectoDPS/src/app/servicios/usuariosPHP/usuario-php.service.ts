@@ -41,4 +41,5 @@ export class UsuarioPHPService {
     return this.http.get(`${this.url}verTrabajadores.php`);
   }
 
+  
 }
