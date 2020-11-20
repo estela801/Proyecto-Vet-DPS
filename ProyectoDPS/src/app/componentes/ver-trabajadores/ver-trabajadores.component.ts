@@ -19,7 +19,9 @@ export class VerTrabajadoresComponent implements OnInit {
   public consultas = null;
   totalConsultas : number;
   page : number = 1;
+  i : number;
   mod = null;
+  array = null;
   trabajadores= {nombre : null, fechaNac: null, telefono : null, correo_usuario : null};
   constructor(
     public usuarioService : UsuarioService,
@@ -52,6 +54,7 @@ export class VerTrabajadoresComponent implements OnInit {
      modificarVet(correo : string){
       this.usuarioPHP.obtenerTrabajadoresm(correo).subscribe(async datos => {
         this.mod = datos[0];
+       this.array = this.mod.telefono.split("-");
         this.trabajadores.correo_usuario = correo;
        const { value:formValues} = await Swal.fire({
           title: "Modificacion de Usuarios",
@@ -62,14 +65,19 @@ export class VerTrabajadoresComponent implements OnInit {
                 '<label>Fecha de Nacimiento:</label>'+
                 '<input type="date" id="fechaNac" value="'+this.mod.fechaNac+'" class="form-control">'+
                 '<label>Telefono:</label>'+
-                '<input type="text" id="telefono" value="'+this.mod.telefono+'" pattern="^[0-9]{4}-[0-9]{4}$" class="form-control">',
+                '<div class="row" style="margin-left:10%;">'+            
+                '<input type="text" id="telefono" maxlength="4" value="'+this.array[0]+'"class="form-control col-4"> '+
+                '<label style="font-size: 30px; text-align: center;"><strong>-</strong></label>'+
+                '<input type="text" id="telefono2" maxlength="4" value="'+this.array[1]+'"class="form-control col-4">'+
+                '</div>',
+               
           focusConfirm: false,
           preConfirm: () => {
             return [
               //Aqui asigno los valores de los inputs con los id que les puse en el sweet alert
               this.trabajadores.nombre = $('#nombre').val(),
               this.trabajadores.fechaNac = $('#fechaNac').val(),
-              this.trabajadores.telefono= $('#telefono').val(),
+              this.trabajadores.telefono= $('#telefono').val()+"-"+$('#telefono2').val(),
              
             
             ]
