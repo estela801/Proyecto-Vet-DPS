@@ -1,17 +1,18 @@
 
-<div class="aside">
+<div class="aside" style="float: left;">
     <app-menu></app-menu>
 </div>
- <div style=" float: left; margin-left: 28%;" >
-        <div class="limiter"  style="width: 100%; ">
-            <div class="container-login100">
-                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
+<body style="background-color: #fff; float: center;">
+ <div style=" float: center; margin-left: 13%;" >
+        <div class="limiter"  style="width: 100%; float: center;">
+            <div class="container-login100" style="float: center;">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="float: center;">
                     <form class="login100-form validate-form" style="width:100%;">
-                        <span class="login100-form-title p-b-33" *ngIf="usuarioPHP.tipo == 1" style="color: #AC4F1F;">
+                        <span class="login100-form-title p-b-33" *ngIf="usuarioPHP.tipo == 1" style="color: #AC4F1F; float: center;">
                             Bienvenido {{usuarioPHP.nombre}}
                         </span>
                         <span class="login100-form-title p-b-33" *ngIf="usuarioPHP.tipo == 2" style="color: #AC4F1F;">
-                            Bienvenido veterinario :  {{usuarioPHP.nombre}}
+                           Veterinario :  {{usuarioPHP.nombre}}
                         </span>
                         <br>
                         <div class="or-container">
@@ -47,7 +48,7 @@
                                         <td>{{citas.fecha}}</td>
                                         <td>{{citas.hora}}</td>
                                         <td><p>
-                                            <a class="btn btn-primary" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white">
+                                            <a class="btn btn-primary" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white" (click)="verMasCitasV(citas.id_citas)">
                                                 Ver mas
                                             </a>
                                         </p></td>
@@ -91,6 +92,6 @@
             </div>
         </div>
 </div>
-
+</body>
 
 

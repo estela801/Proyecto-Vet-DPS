@@ -26,4 +26,8 @@ export class CitaService {
   obtenerInfoCitas(id: string){
     return this.http.get(`${this.url}obtenerInfoCitas.php?cita=${id}`);
   }
+
+  modificarCitas(citas){
+    return this.http.post(`${this.url}modificarCita.php`, JSON.stringify(citas));
+  }
 }
