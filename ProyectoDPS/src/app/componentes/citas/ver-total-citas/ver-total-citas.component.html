@@ -1,10 +1,10 @@
-<div class="aside" style=" float: left;">
+<div style=" float: left;">
     <app-menu></app-menu>
 </div>
- <div style=" float: left; margin-left: 15%;">
+ <div style=" float: center; margin-left: 13%;">
         <div class="limiter">
             <div class="container-login100">
-                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 15%;">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50 " style="margin-top: 0%;">
                     <form class="login100-form validate-form">
                         <span class="login100-form-title p-b-33" style="color: #AC4F1F;">
                             Citas proximas
@@ -15,31 +15,28 @@
                             <div class="or-label"></div>
                             <div class="line-separator"></div>
                         </div>
-                        <div class="text-center p-t-45 p-b-4 mt-5">
+                        <div class=" p-t-45 p-b-4 mt-5">
                             <span class="txt1" style="color: black;">
                                 
-                                <div class="table-responsive " *ngIf="hayRegistros(); else sinarticulos">
-                                    <table class="table">
+                                <div class="table-responsive " >
+                                    <table class="table" style="width: 100%;">
                                       <caption>Citas proximas</caption>
                                       <tr>
-                                          <th scope="col">Mascota</th>
-                                          <th scope="col">Fecha</th>
-                                          <th scope="col">Hora</th>
-                                          <th scope="col">Accion</th>
+                                          <th scope="col"> Mascota</th>
+                                          <th scope="col"> Fecha</th>
+                                          <th scope="col"> Hora</th>
+                                          <th scope="col"> Accion</th>
                                       </tr>
                                       <tbody>
-                                        <tr *ngFor="let citas of consultas | paginate: { id: 'paginacion',
-                                            itemsPerPage: 10,
-                                            currentPage: page,
-                                            totalItems: totalConsultas
-                                        }">
+                                        <tr *ngFor="let citas of consultas | paginate: { id: 'paginacion',itemsPerPage: 4, currentPage: page,totalItems: totalConsultas}">
                                             <td>{{citas.nombre}}</td>
                                             <td>{{citas.fecha}}</td>
                                             <td>{{citas.hora}}</td>
                                             <td><p>
-                                                <a class="btn btn-primary" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white">
-                                                    Ver mas
-                                                </a>
+                                                <a class="btn btn-primary" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white" (click)="verMasCitasV(citas.id_citas)">
+                                                    Ver mas 
+                                                </a></p><br>
+                                                <p><a class="btn btn-warning" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white" (click)="modificarCitas(citas.id_citas)">Modificar</a>
                                             </p></td>
                                         </tr>
                                       </tbody>
@@ -50,9 +47,7 @@
                                   </div>
                             </span>
                         </div>
-                        <ng-template #sinarticulos>
-                            <p>No hay articulos.</p>
-                        </ng-template>
+                        
                     </form>	
                 </div>
             </div>

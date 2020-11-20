@@ -40,18 +40,25 @@ export class PantallaPrincipalComponent implements OnInit {
 
   //Obtener los datos del usuario
   onObtener(correo : string){
-    this.usuariosphp.obtenerIniciado(correo).subscribe(result => this.usuarioPHP = result[0]);
-    this.tenerMascota(correo);
-    if(this.usuarioPHP.tipo == 2){
-      this.consultasVet(correo);
-    }else{
-      this.consultasCliente(correo);
-    }
+    this.usuariosphp.obtenerIniciado(correo).subscribe(result => 
+      {
+        this.usuarioPHP = result[0];
+        this.tenerMascota(correo);
+        if(this.usuarioPHP.tipo == 2){
+          
+          this.consultasVet(correo);
+        }else{
+      
+         this.consultasCliente(correo);
+      }
+      });
+    
     
   }
 
   consultasVet(correo : string){
     this.citaService.obtenerCitasVet(correo).subscribe(datos  => this.consultas = datos);
+    console.log(this.consultas);
   }
 
   consultasCliente(usuario:string){
@@ -64,9 +71,28 @@ export class PantallaPrincipalComponent implements OnInit {
       this.consul = datos[0]
       
       Swal.fire({
-        title: 'Cita para fecha '+ this.consul.fecha ,
-        text: '<b>Something went wrong!</b>',
-        footer: '<a href>Why do I have this issue?</a>',
+        title: 'Cita para del '+ this.consul.fecha ,
+        html: '<b>Mascota ID : </b>'+this.consul.registro_mascota+'</br>'+
+              '<b>Nombre Mascota : </b>'+this.consul.mascota+'</br>'+
+              '<b>Hora : </b>'+this.consul.hora+'</br>'+
+              '<b>Veterinario : </b>'+this.consul.vet+'</br>'+
+              '<b>Descripcion : </b>'+this.consul.descripcion+'</br>'+
+              '<a href="mailto:'+this.consul.correo_usuario+'?Subject=Consulta%20para%20'+this.consul.fecha+'%20con%20mascota%20ID%20'+this.consul.registro_mascota+'">Contactar por correo al veterinario</a>',
+        scrollbarPadding: false
+      })
+    });
+  }
+
+  verMasCitasV(id:string){
+    this.citaService.obtenerInfoCitas(id).subscribe(datos =>{
+      this.consul = datos[0]
+      
+      Swal.fire({
+        title: 'Cita para del '+ this.consul.fecha ,
+        html: '<b>Mascota ID : </b>'+this.consul.registro_mascota+'</br>'+
+              '<b>Nombre Mascota : </b>'+this.consul.mascota+'</br>'+
+              '<b>Hora : </b>'+this.consul.hora+'</br>'+
+              '<b>Descripcion : </b>'+this.consul.descripcion+'</br>',
         scrollbarPadding: false
       })
     });
