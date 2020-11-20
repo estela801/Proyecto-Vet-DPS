@@ -19,6 +19,7 @@ export class UsuarioService{
   constructor(
     public afs : AngularFirestore,
     public afAuth: AngularFireAuth,
+    public router:Router
     /*public router: Router,
     public ngZone: NgZone*/
   ) {  
@@ -129,7 +130,11 @@ export class UsuarioService{
         new auth.GoogleAuthProvider()
       );
       this.updateUserData(user);
+      this.router.navigate(['pantalla-principal']);
       return user;
+
+      
+
     } catch (error) {
       console.log(error);
     }

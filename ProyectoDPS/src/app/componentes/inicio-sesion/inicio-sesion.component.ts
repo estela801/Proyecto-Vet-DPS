@@ -39,6 +39,8 @@ export class InicioSesionComponent implements OnInit {
       console.log(this.usuarioService.usuarioDatos.email);
     }
   }*/
+
+  
   async entrar(){
     try {
       const usuario = await this.usuarioService.login(this.usuario.correo, this.usuario.contra);

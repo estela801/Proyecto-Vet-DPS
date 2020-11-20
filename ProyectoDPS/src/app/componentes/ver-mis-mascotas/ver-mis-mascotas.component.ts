@@ -10,21 +10,18 @@ import {Mascota} from '../../modelos/mascotas/mascota';
 import {RegistroService } from '../../servicios/mascotas/registro.service'
 
 @Component({
-  selector: 'app-ver-mascotas',
-  templateUrl: './ver-mascotas.component.html',
-  styleUrls: ['./ver-mascotas.component.css']
+  selector: 'app-ver-mis-mascotas',
+  templateUrl: './ver-mis-mascotas.component.html',
+  styleUrls: ['./ver-mis-mascotas.component.css']
 })
-export class VerMascotasComponent implements OnInit {
+export class VerMisMascotasComponent implements OnInit {
 
-  
   public usuarioDatos$ : Observable<Usuario> = this.usuarioService.afAuth.user;
   public consultas = null;
   totalConsultas : number;
   page : number = 1;
   mod = null;
-
   mascotas= {nombre : null, edad : null, tipo : null, raza : null, sexo : null, id: null};
-
   constructor(
     public usuarioService : UsuarioService,
     public usuarioPHP : UsuarioPHPService,
@@ -37,7 +34,7 @@ export class VerMascotasComponent implements OnInit {
   
  verMascotas(){
     this.usuarioDatos$.subscribe(info => {
-      this.mascota.verMascotas().subscribe(datos => {
+      this.mascota.verMascotasc(info.email).subscribe(datos => {
         this.consultas = datos;
         this.totalConsultas = datos.propertyIsEnumerable.length;
         console.log("El lenght es de "+this.totalConsultas);
@@ -50,8 +47,14 @@ export class VerMascotasComponent implements OnInit {
     return true;
     }
  
-    //modificar Mascotas
-    modificarMascotas(id:string){
+
+
+
+
+
+
+     //modificar Mascotas
+     modificarMascotas(id:string){
       this.mascota.verMascotasm(id).subscribe(async datos => {
         this.mod = datos[0];
         this.mascotas.id = id;
@@ -107,8 +110,5 @@ export class VerMascotasComponent implements OnInit {
         }
       });
     }
-
-
-
 
 }

@@ -41,4 +41,11 @@ export class UsuarioPHPService {
     return this.http.get(`${this.url}verTrabajadores.php`);
   }
 
+  modificarUsuario(usuarios){
+    return this.http.post(`${this.url}modificarUsuario.php`, JSON.stringify(usuarios));
+  }
+  
+  obtenerTrabajadoresm(correo : string ){
+    return this.http.get(`${this.url}verTrabajadoresm.php?correo=${correo}`);
+  }
 }

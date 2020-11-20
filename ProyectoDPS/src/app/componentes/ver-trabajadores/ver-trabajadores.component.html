@@ -21,11 +21,11 @@
                                           <th scope="col"><strong>Correo</strong></th>
                                           <th scope="col"><strong>Fecha de Nacimiento</strong></th>
                                           <th scope="col"><strong>Teléfono</strong></th>
-                                          
+                                          <th scope="col"><strong>Accion</strong></th>
                                       </tr>
                                       <tbody>
                                         <tr *ngFor="let trabaja of consultas | paginate: { id: 'paginacion',
-                                            itemsPerPage: 10,
+                                            itemsPerPage: 6,
                                             currentPage: page,
                                             totalItems: totalConsultas
                                         }">
@@ -33,7 +33,11 @@
                                             <td>{{trabaja.correo_usuario}}</td>
                                             <td>{{trabaja.fechaNac}}</td>
                                             <td>{{trabaja.telefono}}</td>
-                                           
+                                            <td><p>
+                                                <a class="btn btn-warning" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample" style="color:white" (click)="modificarVet(trabaja.correo_usuario)">
+                                                    Editar información
+                                                </a>
+                                            </p></td>
                                         </tr>
                                       </tbody>
                                     </table>
