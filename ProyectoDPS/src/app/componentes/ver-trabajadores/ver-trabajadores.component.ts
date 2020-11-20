@@ -19,7 +19,8 @@ export class VerTrabajadoresComponent implements OnInit {
   public consultas = null;
   totalConsultas : number;
   page : number = 1;
-
+  mod = null;
+  trabajadores= {nombre : null, fechaNac: null, telefono : null, correo_usuario : null};
   constructor(
     public usuarioService : UsuarioService,
     public usuarioPHP : UsuarioPHPService,
@@ -42,6 +43,62 @@ export class VerTrabajadoresComponent implements OnInit {
 
   hayRegistros() {
     return true;
+    }
+
+
+
+    
+     //modificar Trabajadores
+     modificarVet(correo : string){
+      this.usuarioPHP.obtenerTrabajadoresm(correo).subscribe(async datos => {
+        this.mod = datos[0];
+        this.trabajadores.correo_usuario = correo;
+       const { value:formValues} = await Swal.fire({
+          title: "Modificacion de Usuarios",
+          html: '<b>Correo: </b>'+this.mod.correo_usuario+'</br>'+
+                '<label>Nombre:</label>'+
+                //Aqui solo declare un input, es lo mismo que en html
+                '<input type="text" id="nombre" value="'+this.mod.nombre+'" class="form-control">'+
+                '<label>Fecha de Nacimiento:</label>'+
+                '<input type="date" id="fechaNac" value="'+this.mod.fechaNac+'" class="form-control">'+
+                '<label>Telefono:</label>'+
+                '<input type="text" id="telefono" value="'+this.mod.telefono+'" pattern="^[0-9]{4}-[0-9]{4}$" class="form-control">',
+          focusConfirm: false,
+          preConfirm: () => {
+            return [
+              //Aqui asigno los valores de los inputs con los id que les puse en el sweet alert
+              this.trabajadores.nombre = $('#nombre').val(),
+              this.trabajadores.fechaNac = $('#fechaNac').val(),
+              this.trabajadores.telefono= $('#telefono').val(),
+             
+            
+            ]
+          }
+        })
+
+        if (formValues) {
+         this.usuarioPHP.modificarUsuario(this.trabajadores).subscribe(datos => {
+         if(datos["msg"]=="OK"){
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+            
+            Toast.fire({
+              icon: 'success',
+              html: '<h2>Veterinario Modificado con éxito</h2>'
+            }).then(() => this.verTrabajadores());
+          }
+         });
+        }
+      });
     }
 }
 

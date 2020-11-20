@@ -59,7 +59,7 @@ export class VerMisMascotasComponent implements OnInit {
         this.mod = datos[0];
         this.mascotas.id = id;
        const { value:formValues} = await Swal.fire({
-          title: "Modificacion de Citas",
+          title: "Modificacion de Mascotas",
           html: '<b>Mascota: </b>'+this.mod.registro_mascota+'</br>'+
                 '<label>Nombre:</label>'+
                 //Aqui solo declare un input, es lo mismo que en html
